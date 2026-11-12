@@ -38,8 +38,8 @@ nav div{display:flex;gap:16px}nav a{color:var(--ink);text-decoration:none;opacit
 .scroll{position:absolute;bottom:22px;font-size:10px;letter-spacing:.3em;color:var(--mute)}
 
 /* sections */
-section{padding:84px 0;position:relative}
-.head{margin-bottom:38px}
+section{padding:56px 0;position:relative}
+.head{margin-bottom:26px}
 .head h2{font-size:clamp(38px,11vw,62px);margin-top:10px}
 .head p{color:#56606f;margin-top:14px;font-size:15px}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -67,21 +67,21 @@ section{padding:84px 0;position:relative}
 .cap{font-size:12px;color:var(--mute);margin-top:8px}
 
 /* story */
-.ch{padding:46px 0;border-top:1.5px solid var(--line)}
+.ch{padding:32px 0;border-top:1.5px solid var(--line)}
 .ch .no{font-family:'Bagel Fat One';color:var(--blue);font-size:15px;display:flex;align-items:center;gap:8px}
 .ch .no:after{content:"";flex:1;height:0}
 .ch h3{font-family:'Jua',sans-serif;font-weight:400;font-size:clamp(24px,6.6vw,32px);line-height:1.4;margin:10px 0 4px}
 .ch .date{font-size:16px;font-weight:600;color:var(--blue)}
-.ch p{margin-top:18px;font-size:15.5px;color:#333d4d}
+.ch p{margin-top:14px;font-size:15.5px;color:#333d4d}
 .ch p b{color:var(--deep);font-weight:600}
-.chat{margin:24px 0 6px;display:flex;flex-direction:column;gap:7px}
+.chat{margin:16px 0 4px;display:flex;flex-direction:column;gap:7px}
 .m{max-width:82%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.55;position:relative}
 .m.y{align-self:flex-start;background:#fff;border:1.5px solid var(--line);border-bottom-left-radius:5px}
 .m.c{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}
 .m small{display:block;font-size:10px;opacity:.6;margin-top:3px;letter-spacing:.04em}
 .who{font-size:11px;color:var(--mute);margin:8px 4px 0}.who.r{text-align:right}
-.tag{display:inline-block;margin:18px 6px 0 0;padding:5px 12px;border-radius:99px;border:1.5px solid var(--blue);color:var(--blue);font-size:12px;font-weight:500}
-.big{font-family:'Gowun Batang',serif;font-size:clamp(20px,5.6vw,26px);line-height:1.6;color:var(--deep);margin:28px 0 0;padding-left:16px;border-left:3px solid var(--blue)}
+.tag{display:inline-block;margin:12px 6px 0 0;padding:5px 12px;border-radius:99px;border:1.5px solid var(--blue);color:var(--blue);font-size:12px;font-weight:500}
+.big{font-family:'Gowun Batang',serif;font-size:clamp(20px,5.6vw,26px);line-height:1.6;color:var(--deep);margin:20px 0 0;padding-left:16px;border-left:3px solid var(--blue)}
 
 /* names chart */
 .blue{background:var(--blue);color:#fff}
@@ -144,12 +144,12 @@ footer .ast{font-size:30px;color:var(--blue);margin-bottom:12px}
 .seen li span small{display:block;font-size:12px;color:var(--mute)}
 .seen li.soon{opacity:.75}.seen li.soon b{color:var(--blue)}.seen li em{font-style:normal;font-size:10.5px;font-weight:600;color:var(--blue);border:1.2px solid var(--blue);border-radius:99px;padding:1px 7px;margin-left:6px;vertical-align:1px}
 /* photos */
-.strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:24px -24px 0;padding:0 24px 6px;scrollbar-width:none}
+.strip{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:16px -24px 0;padding:0 24px 6px;scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
 .strip figure{flex:0 0 auto;scroll-snap-align:center;margin:0}
-.strip img{display:block;height:300px;width:auto;border-radius:16px;cursor:zoom-in;background:var(--paper)}
+.strip img{display:block;height:200px;width:auto;border-radius:16px;cursor:zoom-in;background:var(--paper)}
 .strip figcaption,.wide figcaption{font-size:11px;color:var(--mute);margin-top:6px;letter-spacing:.04em}
-.wide{margin:34px 0 0}.wide img{display:block;width:100%;border-radius:22px;cursor:zoom-in}
+.wide{margin:24px 0 0}.wide img{display:block;width:100%;border-radius:22px;cursor:zoom-in}
 .album{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;border-radius:14px;overflow:hidden}@media(max-width:420px){.album{grid-template-columns:repeat(4,1fr)}}
 .album img{display:block;width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;background:var(--paper)}
 .info img{display:block;width:100%;height:170px;object-fit:cover;border-radius:12px;margin-top:14px;cursor:zoom-in}
