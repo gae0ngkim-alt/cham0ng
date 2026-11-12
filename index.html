@@ -431,14 +431,15 @@ var JJ=[
  {ll:[126.2395,33.394],n:'협재',w:'2026.09.20',t:'바다 앞 컵라면',p:'협재 해변 파라솔 아래에서 나눠 먹은 컵라면.',img:'photos/jj1.jpg',dx:-12,a:'end',dy:14}
 ];
 var BS=[
+ {ll:[128.9409,35.1056],n:'을숙도',w:'2026.10',t:'부산현대미술관',p:'을숙도의 부산현대미술관.',dx:12,a:'start'},
  {ll:[129.0225,35.0755],n:'송도 앞바다',w:'2026.10.08',t:'송도 바다 앞 숙소',p:'부산 여행 첫날, 송도 앞바다를 마주한 숙소에서 시작.',dx:12,a:'start'},
- {ll:[129.017,35.0606],n:'암남공원',w:'2026.10.08',t:'암남공원',p:'송도 앞바다 옆, 함께 걸은 암남공원.',dx:12,a:'start',dy:14},
- {ll:[129.068,35.091],n:'영도',w:'2026.10.09',t:'영도',p:'숙소를 옮기는 길에 들른 영도.',dx:12,a:'start'},
+ {ll:[129.017,35.0606],n:'암남공원',w:'2026.10',t:'조개구이',p:'송도 앞바다 옆 암남공원에서 구워 먹은 조개구이.',dx:12,a:'start',dy:14},
+ {ll:[129.068,35.091],n:'영도',w:'2026.10.09',t:'부산비엔날레 · 모모스커피 · 밀면',p:'영도에서 부산비엔날레를 보고, 모모스커피에서 커피 한 잔, 그리고 밀면까지.',img:'photos/p02.jpg',dx:12,a:'start'},
  {ll:[129.136,35.169],n:'벡스코',w:'2026.10',t:'벡스코',p:'부산 여행 중 함께 들른 벡스코.',dx:-12,a:'end',dy:-6},
  {ll:[129.1186,35.1532],n:'광안리',w:'2026.10.10',t:'광안대교 앞에서',p:'밤의 광안대교 앞 모래사장.',img:'photos/p05.jpg',dx:-12,a:'end',dy:12},
- {ll:[129.1604,35.1587],n:'해운대',w:'2026.10',t:'해운대',p:'송도에서 시작해 해운대까지 이어진 여행.',dx:12,a:'start',dy:14}
+ {ll:[129.1604,35.1587],n:'해운대',w:'2026.10',t:'해운대',p:'송도에서 시작해 해운대까지 이어진 여행.',dx:0,a:'middle',dy:26}
 ];
-JJ.forEach(function(o){kp(o,45,588,4.7)});BS.forEach(function(o){o.x=30+(o.ll[0]-129.0)/(0.21)*340;o.y=30+(35.19-o.ll[1])/(0.14)*300;});
+JJ.forEach(function(o){kp(o,45,588,4.7)});BS.forEach(function(o){o.x=30+(o.ll[0]-128.93)/(0.24)*340;o.y=30+(35.19-o.ll[1])/(0.14)*300;});
 var F={kr:draw('pkr',KR,8),seoul:draw('pse',SE,8),jeju:draw('pjj',JJ,8),busan:draw('pbs',BS,8)},M={kr:'mkr',seoul:'mse',jeju:'mjj',busan:'mbs'};show(F.kr[0],F.kr[1]);
 document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});
