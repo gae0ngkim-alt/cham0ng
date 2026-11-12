@@ -378,7 +378,7 @@ el.textContent=tk>0?'도쿄까지 D-'+tk:(tk>=-3?'지금, 도쿄':'2026.11.26—
 
 var pop=document.getElementById('pop');if(d>0){document.getElementById('popn').textContent=d;document.getElementById('popd').textContent=d;pop.classList.add('on');document.documentElement.style.overflow='hidden';document.getElementById('popb').addEventListener('click',function(e){e.stopPropagation();pop.classList.remove('on');document.documentElement.style.overflow='';if(au.paused)bb.click();});}
 
-var rows=[['님 (채문님 · 가영님)',[22,1,2,1,0]],['가영아 · 가영이',[19,196,159,133,19]],['요이',[0,0,10,104,123]],['자기 (요이가 챔에게)',[1,2,26,114,48]],['사랑해 (챔 + 요이)',[0,6,13,21,4]]];
+var rows=[['가영이',[19,196,159,133,19]],['요이',[0,0,10,104,123]],['자기',[1,2,26,114,48]]];
 var mon=['7월','8월','9월','10월','11월'],h='';
 rows.forEach(function(r){var mx=Math.max.apply(null,r[1]);h+='<div class="row"><h4>'+r[0]+'<span>최고 '+mx+'회</span></h4><div class="cols">'+r[1].map(function(v){return '<i style="height:'+Math.max(3,v/mx*100)+'%"><u>'+v+'</u></i>'}).join('')+'</div><div class="mon">'+mon.map(function(m){return '<span>'+m+'</span>'}).join('')+'</div></div>'});
 document.getElementById('rows').innerHTML=h;
