@@ -123,6 +123,7 @@ section{padding:84px 0;position:relative}
 .info .when{font-size:11px;letter-spacing:.16em;opacity:.8}
 .info h4{font-family:'Bagel Fat One';font-weight:400;font-size:24px;margin:2px 0 6px}
 .info p{font-size:14px;line-height:1.65;opacity:.95}
+.info .more{margin-top:12px;font:600 13px 'IBM Plex Sans KR',sans-serif;color:var(--blue);background:#fff;border:0;border-radius:99px;padding:8px 16px;cursor:pointer}
 .abroad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
 .abroad div{border:1.5px solid var(--line);border-radius:18px;padding:16px;background:#fff;font-size:13px}
 .abroad b{font-family:'Bagel Fat One';font-weight:400;color:var(--blue);font-size:20px;display:block}
@@ -400,11 +401,11 @@ document.getElementById('rows').innerHTML=h;
 
 var NS='http://www.w3.org/2000/svg';
 var KR=[
- {x:126,y:140,n:'서울',w:'2026.07.25 —',t:'시작한 도시',p:'합정과 봉천, 2호선 위의 두 사람. 대부분의 날이 여기서 지나갔다. ‘서울’ 탭에서 자세히.',dx:-14,a:'end'},
+ {x:126,y:140,n:'서울',tab:'seoul',w:'2026.07.25 —',t:'시작한 도시',p:'합정과 봉천, 2호선 위의 두 사람. 대부분의 날이 여기서 지나갔다. ',dx:-14,a:'end'},
  {x:165,y:83,n:'포천',w:'2026.08.15 — 16',t:'첫 글램핑',p:'광복절 주말, 포천 이동면의 카라반. 이동갈비 맛집 리스트를 자정까지 주고받았다.',dx:14,a:'start'},
- {x:60,y:616,n:'제주',w:'2026.09 셋째 주',t:'제주 워케이션',p:'요이가 짠 타임테이블을 들고 한림·협재로. “제주에서 많이 많이 행복하자🤍”',dx:14,a:'start'},
+ {x:60,y:616,n:'제주',tab:'jeju',w:'2026.09 셋째 주',t:'제주 워케이션',p:'요이가 짠 타임테이블을 들고 한림·협재로. “제주에서 많이 많이 행복하자🤍”',dx:14,a:'start'},
  {x:91,y:107,n:'파주',w:'2026.10.25',t:'아울렛 쇼핑',p:'파리에서 돌아온 요이와 맞은 첫 일요일, 파주 아울렛에서 쇼핑.',dx:-14,a:'end'},
- {x:324,y:418,n:'부산',w:'2026.10.08 — 11',t:'요이가 데려간 부산',p:'송도 바다 앞 숙소에서 해운대, 광안리까지. 영화제를 보고, 챔이 요이의 동생을 처음 만난 여행.',img:'photos/p05.jpg',dx:-14,a:'end'}
+ {x:324,y:418,n:'부산',tab:'busan',w:'2026.10.08 — 11',t:'요이가 데려간 부산',p:'송도 바다 앞 숙소에서 해운대, 광안리까지. 영화제를 보고, 챔이 요이의 동생을 처음 만난 여행.',img:'photos/p05.jpg',dx:-14,a:'end'}
 ];
 function prj(lon,lat){return [(lon-126.86)/(127.075-126.86)*400,20+(37.665-lat)/(37.665-37.425)*500];}
 var SE=[
@@ -433,7 +434,7 @@ SE.forEach(function(s){var q=prj(s.ll[0],s.ll[1]);s.x=q[0];s.y=q[1];});
 var rv=[[126.862,37.572],[126.89,37.553],[126.915,37.538],[126.94,37.528],[126.96,37.517],[126.985,37.51],[127.01,37.519],[127.03,37.527],[127.05,37.532],[127.075,37.536]];
 document.getElementById('river').setAttribute('d',rv.map(function(c,i){var q=prj(c[0],c[1]);return (i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)}).join(''));
 var info=document.getElementById('info');
-function show(s,g){info.innerHTML='<div class="when">'+s.w+'</div><h4>'+s.t+'</h4><p>'+s.p+'</p>'+(s.img?'<img src="'+s.img+'" alt="'+s.t+'">':'');
+function show(s,g){info.innerHTML='<div class="when">'+s.w+'</div><h4>'+s.t+'</h4><p>'+s.p+'</p>'+(s.tab?'<button type="button" class="more" data-go="'+s.tab+'">'+s.n+' 자세히 보기 →</button>':'')+(s.img?'<img src="'+s.img+'" alt="'+s.t+'">':'');
   document.querySelectorAll('.pin').forEach(function(e){e.classList.remove('sel')});if(g)g.classList.add('sel');}
 function draw(id,arr,r){var host=document.getElementById(id),first=null;
   arr.forEach(function(s,i){var g=document.createElementNS(NS,'g');g.setAttribute('class','pin'+(s.next?' next':''));g.setAttribute('tabindex','0');g.setAttribute('role','button');
@@ -468,6 +469,7 @@ document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener
   var v=b.dataset.v;for(var m in M)document.getElementById(M[m]).style.display=m===v?'':'none';
   var f=F[v];show(f[0],f[1]);});});
 
+info.addEventListener('click',function(e){var b=e.target.closest('.more');if(!b)return;e.stopPropagation();document.querySelector('.tabs button[data-v='+b.dataset.go+']').click();document.getElementById('map').scrollIntoView({behavior:'smooth'});});
 var lb=document.getElementById('lb');document.addEventListener('click',function(e){var i=e.target;if(i.tagName==='IMG'&&i.closest('.strip,.album,.wide,.info')){lb.firstChild.src=i.src;lb.classList.add('on')}else if(lb.classList.contains('on'))lb.classList.remove('on')});
 var TR=['music/part2.mp3','music/part1.mp3'],ti=0,au=document.getElementById('au'),bb=document.getElementById('bgm'),bl=bb.querySelector('span');
 function ui(){var on=!au.paused;bb.classList.toggle('on',on);bl.textContent=on?'PAUSE':'PLAY';}
