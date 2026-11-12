@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cha*mong — 챔과 요이의 기록</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Jua&family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F8F6F1;--paper:#EFEBE2;--blue:#4C7BC0;--deep:#2F5796;--ink:#1F2A3C;--mute:#8A8F99;--line:rgba(76,123,192,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:'IBM Plex Sans KR',system-ui,sans-serif;font-weight:400;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.5;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .48 0 0 0 0 .42 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:680px;margin:0 auto;padding:0 24px}
+.d{font-family:'Bagel Fat One',sans-serif;font-weight:400;color:var(--blue);line-height:1.05;letter-spacing:-.01em}
+.s{font-family:'Gowun Batang',serif}
+.k{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.ast{display:inline-block;width:1em;height:1em;vertical-align:-.12em}
+.ast path{stroke:currentColor;stroke-width:13;stroke-linecap:round;fill:none}
+.spin{animation:sp 22s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:linear-gradient(var(--cream) 55%,rgba(248,246,241,0));font-size:12px}
+nav b{font-family:'Bagel Fat One';font-weight:400;color:var(--blue);font-size:17px}
+nav div{display:flex;gap:16px}nav a{color:var(--ink);text-decoration:none;opacity:.7}
+
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px 24px 60px;position:relative}
+.hero img{width:min(78vw,340px);height:auto;mix-blend-mode:multiply;border-radius:8px}
+.hero h1{font-family:'Gowun Batang',serif;font-weight:400;font-size:clamp(17px,4.6vw,21px);margin-top:10px;line-height:1.9}
+.hero h1 em{font-style:normal;color:var(--blue);font-weight:700}
+.dday{margin-top:34px;display:flex;align-items:baseline;gap:10px;justify-content:center}
+.dday span{font-family:'Bagel Fat One';font-size:clamp(54px,17vw,92px);color:var(--blue);line-height:1}
+.dday small{font-size:12px;color:var(--mute);letter-spacing:.14em}
+.float{position:absolute;color:var(--blue);opacity:.9}
+.f1{top:16%;left:9%;font-size:26px}.f2{bottom:17%;right:10%;font-size:40px}.f3{top:27%;right:14%;font-size:15px;opacity:.5}
+.scroll{position:absolute;bottom:22px;font-size:10px;letter-spacing:.3em;color:var(--mute)}
+
+/* sections */
+section{padding:84px 0;position:relative}
+.head{margin-bottom:38px}
+.head h2{font-size:clamp(38px,11vw,62px);margin-top:10px}
+.head p{color:#56606f;margin-top:14px;font-size:15px}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+
+/* profile cards */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:20px 18px}
+.card h3{font-family:'Bagel Fat One';font-weight:400;font-size:30px;color:var(--blue);line-height:1.1}
+.card .n{font-size:13px;color:var(--mute);margin-top:2px}
+.card ul{list-style:none;margin-top:14px;font-size:13px;line-height:1.9}
+.card.b{background:var(--blue);border-color:var(--blue);color:#fff}.card.b h3{color:#fff}.card.b .n{color:rgba(255,255,255,.7)}
+.meet{margin-top:12px;text-align:center;border:1.5px dashed var(--blue);border-radius:22px;padding:16px;font-size:14px}
+.meet b{color:var(--blue)}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.num{border-top:2px solid var(--blue);padding:14px 2px 6px}
+.num b{font-family:'Bagel Fat One';font-weight:400;font-size:clamp(34px,10vw,48px);color:var(--blue);display:block;line-height:1.1}
+.num span{font-size:13px;color:#56606f}
+.ratio{margin-top:26px}
+.bar{display:flex;height:38px;border-radius:19px;overflow:hidden;font-size:12px;font-weight:600}
+.bar i{font-style:normal;display:flex;align-items:center;padding:0 14px;white-space:nowrap}
+.bar .c{background:var(--blue);color:#fff}.bar .y{background:#fff;color:var(--blue);border:1.5px solid var(--blue);border-left:0;border-radius:0 19px 19px 0;justify-content:flex-end;flex:1}
+.cap{font-size:12px;color:var(--mute);margin-top:8px}
+
+/* story */
+.ch{padding:46px 0;border-top:1.5px solid var(--line)}
+.ch .no{font-family:'Bagel Fat One';color:var(--blue);font-size:15px;display:flex;align-items:center;gap:8px}
+.ch .no:after{content:"";flex:1;height:0}
+.ch h3{font-family:'Jua',sans-serif;font-weight:400;font-size:clamp(24px,6.6vw,32px);line-height:1.4;margin:10px 0 4px}
+.ch .date{font-size:12px;letter-spacing:.14em;color:var(--mute)}
+.ch p{margin-top:18px;font-size:15.5px;color:#333d4d}
+.ch p b{color:var(--deep);font-weight:600}
+.chat{margin:24px 0 6px;display:flex;flex-direction:column;gap:7px}
+.m{max-width:82%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.55;position:relative}
+.m.y{align-self:flex-start;background:#fff;border:1.5px solid var(--line);border-bottom-left-radius:5px}
+.m.c{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}
+.m small{display:block;font-size:10px;opacity:.6;margin-top:3px;letter-spacing:.04em}
+.who{font-size:11px;color:var(--mute);margin:8px 4px 0}.who.r{text-align:right}
+.tag{display:inline-block;margin:18px 6px 0 0;padding:5px 12px;border-radius:99px;border:1.5px solid var(--blue);color:var(--blue);font-size:12px;font-weight:500}
+.big{font-family:'Gowun Batang',serif;font-size:clamp(20px,5.6vw,26px);line-height:1.6;color:var(--deep);margin:28px 0 0;padding-left:16px;border-left:3px solid var(--blue)}
+
+/* names chart */
+.blue{background:var(--blue);color:#fff}
+.blue .k,.blue .d{color:#fff}.blue .head p{color:rgba(255,255,255,.82)}
+.rows{display:flex;flex-direction:column;gap:22px}
+.row h4{font-weight:500;font-size:14px;display:flex;justify-content:space-between;margin-bottom:8px}
+.row h4 span{opacity:.7;font-weight:300;font-size:12px}
+.cols{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:74px}
+.cols i{display:block;background:#fff;border-radius:6px 6px 2px 2px;min-height:2px;position:relative;transform-origin:bottom;transform:scaleY(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.on .cols i{transform:none}
+.cols i u{position:absolute;top:-17px;left:0;right:0;text-align:center;font-size:10px;text-decoration:none;opacity:.85}
+.mon{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:10px;text-align:center;opacity:.65;margin-top:5px}
+.note{font-size:12px;opacity:.7;margin-top:26px}
+
+/* film */
+.film{aspect-ratio:16/10;border-radius:22px;background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;position:relative;overflow:hidden}
+.film .ast{font-size:54px;color:var(--blue)}
+.film p{font-size:13px;opacity:.75;max-width:80%}
+.film b{font-family:'Bagel Fat One';font-weight:400;font-size:22px}
+.film:before,.film:after{content:"";position:absolute;left:0;right:0;height:14px;background:repeating-linear-gradient(90deg,transparent 0 10px,rgba(255,255,255,.16) 10px 22px)}
+.film:before{top:8px}.film:after{bottom:8px}
+
+/* map */
+.maps{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:14px;position:relative}
+.maps svg{display:block;width:100%;height:auto}
+.land{fill:var(--paper);stroke:var(--blue);stroke-width:1.1;stroke-linejoin:round}
+.nk{fill:none;stroke:var(--line);stroke-width:1}
+.pin{cursor:pointer;outline:none}
+.pin circle.o{fill:var(--blue);opacity:.18;transition:r .3s}
+.pin circle.i{fill:var(--blue);stroke:#fff;stroke-width:2}
+.pin.next circle.i{fill:#fff;stroke:var(--blue)}
+.pin.sel circle.o{opacity:.35}
+.pin text{font-family:'IBM Plex Sans KR';font-size:15px;font-weight:600;fill:var(--deep);paint-order:stroke;stroke:#fff;stroke-width:4px}
+.river{fill:none;stroke:var(--blue);stroke-width:9;opacity:.22;stroke-linecap:round;stroke-linejoin:round}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tabs button{font:inherit;font-size:13px;font-weight:500;padding:7px 16px;border-radius:99px;border:1.5px solid var(--blue);background:transparent;color:var(--blue);cursor:pointer}
+.tabs button.on{background:var(--blue);color:#fff}
+.info{margin-top:14px;border-radius:18px;background:var(--blue);color:#fff;padding:18px 20px;min-height:112px}
+.info .when{font-size:11px;letter-spacing:.16em;opacity:.8}
+.info h4{font-family:'Bagel Fat One';font-weight:400;font-size:24px;margin:2px 0 6px}
+.info p{font-size:14px;line-height:1.65;opacity:.95}
+.abroad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.abroad div{border:1.5px solid var(--line);border-radius:18px;padding:16px;background:#fff;font-size:13px}
+.abroad b{font-family:'Bagel Fat One';font-weight:400;color:var(--blue);font-size:20px;display:block}
+.abroad small{color:var(--mute);letter-spacing:.1em;font-size:10.5px}
+
+/* next */
+.next{text-align:center}
+.next .d{font-size:clamp(44px,13vw,76px)}
+.count{display:inline-block;margin-top:22px;padding:10px 22px;border-radius:99px;background:var(--blue);color:#fff;font-weight:600;font-size:14px}
+footer{padding:60px 24px 80px;text-align:center;font-size:12px;color:var(--mute)}
+footer .ast{font-size:30px;color:var(--blue);margin-bottom:12px}
+/* photos */
+.strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:24px -24px 0;padding:0 24px 6px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip figure{flex:0 0 auto;scroll-snap-align:center;margin:0}
+.strip img{display:block;height:300px;width:auto;border-radius:16px;cursor:zoom-in;background:var(--paper)}
+.strip figcaption,.wide figcaption{font-size:11px;color:var(--mute);margin-top:6px;letter-spacing:.04em}
+.wide{margin:34px 0 0}.wide img{display:block;width:100%;border-radius:22px;cursor:zoom-in}
+.album{columns:4;column-gap:6px}@media(max-width:420px){.album{columns:3}}
+.album img{display:block;width:100%;margin-bottom:6px;border-radius:10px;cursor:zoom-in;break-inside:avoid;background:var(--paper)}
+.info img{display:block;width:100%;height:170px;object-fit:cover;border-radius:12px;margin-top:14px;cursor:zoom-in}
+#lb{position:fixed;inset:0;z-index:99;background:rgba(20,28,42,.94);display:none;align-items:center;justify-content:center;padding:18px;cursor:zoom-out}
+#lb.on{display:flex}#lb img{max-width:100%;max-height:100%;border-radius:10px}
+#bgm{position:fixed;right:16px;bottom:18px;z-index:60;display:flex;align-items:center;gap:8px;height:46px;padding:0 16px 0 12px;border-radius:99px;border:0;background:var(--blue);color:#fff;font:600 12px 'IBM Plex Sans KR',sans-serif;letter-spacing:.08em;box-shadow:0 6px 20px rgba(47,87,150,.35);cursor:pointer}
+#bgm .ast{font-size:24px}#bgm.on .ast{animation:sp 4s linear infinite}
+.vid{margin:0}.vid video{display:block;width:100%;aspect-ratio:16/9;border-radius:22px;background:var(--ink)}.vid figcaption{font-size:11px;color:var(--mute);margin-top:8px;letter-spacing:.04em}
+#pop{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(47,87,150,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#pop.on{display:flex}
+#pop .box{position:relative;width:100%;max-width:340px;background:var(--cream);border-radius:28px;padding:44px 26px 28px;text-align:center;box-shadow:0 24px 60px rgba(20,28,42,.35);animation:popin .7s cubic-bezier(.2,1.3,.4,1) both}
+#pop .ast{color:var(--blue);font-size:38px}
+#pop .n{font-family:'Bagel Fat One',sans-serif;color:var(--blue);font-size:84px;line-height:1;margin-top:8px}
+#pop .n small{font-size:30px}
+#pop p{font-family:'Gowun Batang',serif;font-weight:700;font-size:22px;line-height:1.6;margin-top:14px;color:var(--ink)}
+#pop button{margin-top:26px;width:100%;height:54px;border:0;border-radius:99px;background:var(--blue);color:#fff;font:600 17px 'IBM Plex Sans KR',sans-serif;cursor:pointer;animation:bob 1.6s ease-in-out infinite}
+#pop .a2{position:absolute;top:-16px;right:18px;font-size:46px}
+@keyframes popin{from{opacity:0;transform:scale(.8) translateY(20px)}to{opacity:1;transform:none}}
+#bgm.cue{animation:bob 1.6s ease-in-out infinite}
+#bgm.cue:before,#bgm.cue:after{content:"";position:absolute;inset:0;border-radius:99px;border:2px solid var(--blue);animation:ring 1.8s ease-out infinite;pointer-events:none}
+#bgm.cue:after{animation-delay:.9s}
+#bgm.cue .ast{animation:sp 3s linear infinite}
+#tip{position:fixed;right:16px;bottom:76px;z-index:60;background:#fff;color:var(--deep);border:1.5px solid var(--blue);border-radius:16px 16px 4px 16px;padding:9px 14px;font-size:13px;font-weight:500;box-shadow:0 6px 20px rgba(47,87,150,.18);animation:tipin .7s .8s both,bob 1.6s 1.5s ease-in-out infinite;cursor:pointer}
+#tip.off{display:none}
+@keyframes ring{from{transform:scale(1);opacity:.8}to{transform:scale(1.5,1.9);opacity:0}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes tipin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.spin{animation:none}.cols i{transform:none;transition:none}#bgm.cue,#bgm.cue:before,#bgm.cue:after,#bgm .ast,#tip,#pop .box,#pop button{animation:none}#bgm.cue:before,#bgm.cue:after{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="a" viewBox="0 0 100 100"><path d="M50 10V90M10 50H90M22 22L78 78M78 22L22 78" stroke="currentColor" stroke-width="13" stroke-linecap="round" fill="none"/></symbol></defs></svg>
+
+<nav><b>cha*mong</b><div><a href="#story">이야기</a><a href="#album">앨범</a><a href="#film">영상</a><a href="#map">지도</a></div></nav>
+
+<header class="hero">
+  <svg class="ast float f1 spin"><use href="#a"/></svg><svg class="ast float f2 spin"><use href="#a"/></svg><svg class="ast float f3"><use href="#a"/></svg>
+  <img src="logo.png" alt="cha*mong 로고">
+  <h1><em>챔</em>과 <em>요이</em>,<br>2026년 7월 25일부터의 기록</h1>
+  <div class="dday"><small>TOGETHER</small><span id="dday">D+111</span></div>
+  <div class="scroll">SCROLL</div>
+</header>
+
+<section><div class="wrap">
+  <div class="head rv"><div class="k">Two marketers</div><h2 class="d">마케터 둘이 만나면</h2></div>
+  <div class="duo rv">
+    <div class="card b"><h3>챔</h3><div class="n">서채문 · 11월 28일생</div><ul><li>소개팅앱 마케터</li><li>봉천, 퇴근 후 운동 루틴</li><li>더위에 약함</li></ul></div>
+    <div class="card"><h3>요이</h3><div class="n">김가영 · 9월 4일생</div><ul><li>출판사 마케터</li><li>합정, 금요일은 2시 퇴근</li><li>더위에 강함</li></ul></div>
+  </div>
+  <figure class="wide rv"><img loading="lazy" src="photos/hero.jpg" alt="귤메달 티셔츠를 맞춰 입은 두 사람"><figcaption>귤메달 티셔츠를 맞춰 입은 날</figcaption></figure>
+  <div class="meet rv" style="margin-top:24px"><b>소개팅앱 마케터</b>와 <b>출판 마케터</b>의 만남</div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="head rv"><div class="k">In numbers</div><h2 class="d">113일치의<br>카톡</h2><p>2026.07.22 밤 11:54 첫 메시지부터 2026.11.12까지, 대화방에 쌓인 것들.</p></div>
+  <div class="nums rv">
+    <div class="num"><b>20,685</b><span>주고받은 메시지</span></div>
+    <div class="num"><b>2,119</b><span>보낸 사진</span></div>
+    <div class="num"><b>3,379</b><span>‘ㅎㅎ’가 들어간 말</span></div>
+    <div class="num"><b>44</b><span>‘사랑해’가 들어간 말</span></div>
+    <div class="num"><b>581</b><span>가장 수다스러웠던 날 (8월 3일)</span></div>
+    <div class="num"><b>18시</b><span>하루 중 가장 대화가 많은 시간</span></div>
+  </div>
+  <div class="ratio rv">
+    <div class="bar"><i class="c" style="width:53.2%">챔 11,008</i><i class="y">요이 9,677</i></div>
+    <div class="cap">말은 챔이 조금 더 많이. 대신 하루의 첫 카톡은 요이가 더 자주 보냈다 (66일 대 47일).</div>
+  </div>
+</div></section>
+
+<section id="story"><div class="wrap">
+  <div class="head rv"><div class="k">Story</div><h2 class="d">우리가<br>우리가 되기까지</h2></div>
+
+  <article class="ch rv">
+    <div class="no"><svg class="ast"><use href="#a"/></svg>01</div>
+    <div class="date">2026.07.22 — 07.24</div>
+    <h3>“통하는게 많아서 좋아요”</h3>
+    <p>수요일 밤 11시 54분, 글램에서 카톡으로 넘어온 첫 인사. 옷과 전시, 생맥주, 자유로운 출퇴근까지. 자정을 넘겨 이어진 대화는 서로 비슷한 점을 하나씩 발견하는 일이었다.</p>
+    <div class="chat">
+      <div class="m c">가영님 안녕하세요! ㅎㅎ<small>7.22 오후 11:54</small></div>
+      <div class="m y">채문님이랑 저랑 옷좋아하구 전시좋아하구 그런게 잘맞을거같아서 대화해보고 싶었어요<small>7.23 오전 12:00</small></div>
+      <div class="m y">통하는게 많아서 좋아요<small>오전 12:05</small></div>
+    </div>
+    <span class="tag">채문님</span><span class="tag">가영님</span><span class="tag">존댓말</span>
+  </article>
+
+  <article class="ch rv">
+    <div class="no"><svg class="ast"><use href="#a"/></svg>02</div>
+    <div class="date">2026.07.25 토요일</div>
+    <h3>첫 만남은 전시부터,<br>틀에 박히지 않게</h3>
+    <p>만나자마자 전시는 조금 낯설다던 챔과, 원래 틀에 박힌 걸 안 좋아한다던 요이. 오후 4시 <b>63빌딩 퐁피두센터</b>, 챔은 커피 두 잔을 사 들고 도착했다. 저녁은 회를 제일 좋아하는 요이를 위해 <b>노량진</b>으로.</p>
+    <div class="chat">
+      <div class="m c">오 만나자마자 전시...는 조금 낯선데요?<small>7.24 오후 2:14</small></div>
+      <div class="m y">저는 원래 틀에 박힌걸 별로 안좋아해요,,<small>오후 2:15</small></div>
+      <div class="m c">제가 커피를 사서 가는 길이라<small>7.25 오후 3:56</small></div>
+      <div class="m y">감동 ....<small>오후 3:56</small></div>
+    </div>
+    <div class="strip"><figure><img loading="lazy" src="photos/fm1.jpg" alt="7.25 63빌딩 퐁피두센터"><figcaption>7.25 63빌딩 퐁피두센터</figcaption></figure><figure><img loading="lazy" src="photos/fm2.jpg" alt="노량진 가는 택시"><figcaption>노량진 가는 택시</figcaption></figure><figure><img loading="lazy" src="photos/fm3.jpg" alt="7.25 노량진, 첫 저녁"><figcaption>7.25 노량진, 첫 저녁</figcaption></figure></div>
+    <p>그리고 다음 날 아침, 대화방의 말투가 통째로 바뀌어 있었다.</p>
+    <div class="chat">
+      <div class="m c">조심히 가 가영아~~<small>7.26 오전 11:45</small></div>
+      <div class="m y">나 이제 다왔어! 얼른 해장해 오빠<small>오후 12:05</small></div>
+    </div>
+    <div class="big">‘채문님’이 ‘오빠’가 되는 데<br>걸린 시간, 하루.</div>
+  </article>
+
+  <article class="ch rv">
+    <div class="no"><svg class="ast"><use href="#a"/></svg>03</div>
+    <div class="date">2026.08</div>
+    <h3>가장 수다스러웠던 여름</h3>
+    <p>8월은 대화가 폭발한 달. 8월 3일 하루에만 581개의 메시지가 오갔고, 그날 요이는 처음으로 채문을 <b>‘챔’</b>이라고 불렀다.</p>
+    <div class="chat">
+      <div class="m y">저녁뭐먹었어 챔~<small>8.3 오후 7:40</small></div>
+    </div>
+    <p>동네 카페 사장님이 먼저 알아볼 만큼, 둘은 티가 났다.</p>
+    <div class="chat">
+      <div class="m y">나는 카페왔어 ㅎㅎ 전에 오빠랑 손잡고가다가 인사한 사장님.. 보자마자 남자친구 생겼냐고 호들갑하심 ㅎㅎ<small>8.5 오후 8:11</small></div>
+    </div>
+    <p>광복절 주말에는 <b>포천</b>으로 첫 글램핑. 요이는 챔이 잔잔하게 읽을 책을 따로 챙겼다.</p>
+    <div class="strip"><figure><img loading="lazy" src="photos/pc1.jpg" alt="포천 글램핑"><figcaption>포천 글램핑</figcaption></figure><figure><img loading="lazy" src="photos/pc2.jpg" alt="포천 글램핑"><figcaption>포천 글램핑</figcaption></figure><figure><img loading="lazy" src="photos/pc3.jpg" alt="포천 글램핑"><figcaption>포천 글램핑</figcaption></figure><figure><img loading="lazy" src="photos/pc4.jpg" alt="포천 글램핑"><figcaption>포천 글램핑</figcaption></figure></div>
+    <p>그리고 요이의 긴 휴가가 끝나던 밤, 자정을 조금 넘겨 그 말이 처음 도착했다. 8월의 끝자락인 29일에는 유영국의 〈산은 내 안에 있다〉 전시를 함께 봤다. 첫 만남처럼, 또 전시였다.</p>
+    <div class="chat">
+      <div class="m c">사랑해!<small>8.20 오전 12:16</small></div>
+      <div class="m y">오빠 오늘도 힘내요🤍 나두 사랑해~<small>오전 8:38</small></div>
+    </div>
+    <div class="strip"><figure><img loading="lazy" src="photos/p09.jpg" alt="8.29 유영국 〈산은 내 안에 있다〉 전시"><figcaption>8.29 유영국 〈산은 내 안에 있다〉 전시</figcaption></figure><figure><img loading="lazy" src="photos/yy1.jpg" alt="8.29 서울시립미술관 서소문본관"><figcaption>8.29 서울시립미술관 서소문본관</figcaption></figure><figure><img loading="lazy" src="photos/yy2.jpg" alt="8.29 유영국 전시"><figcaption>8.29 유영국 전시</figcaption></figure><figure><img loading="lazy" src="photos/yy3.jpg" alt="8.29 유영국 전시"><figcaption>8.29 유영국 전시</figcaption></figure><figure><img loading="lazy" src="photos/yy4.jpg" alt="8.29 유영국 전시"><figcaption>8.29 유영국 전시</figcaption></figure></div>
+    <span class="tag">챔</span><span class="tag">가영이</span><span class="tag">첫 사랑해</span>
+  </article>
+
+  <article class="ch rv">
+    <div class="no"><svg class="ast"><use href="#a"/></svg>04</div>
+    <div class="date">2026.09</div>
+    <h3>가영이 생일로 시작한 가을,<br>그리고 ‘요이’의 탄생</h3>
+    <p>9월 1일, 운동 가서 보낸 한 줄에 <b>‘가요이’</b>가 처음 등장한다. 이 별명은 곧 ‘요이’로 줄어들어 대화방의 주인공이 된다. 4일은 요이의 생일.</p>
+    <div class="strip"><figure><img loading="lazy" src="photos/bd1.jpg" alt="요이의 생일"><figcaption>요이의 생일</figcaption></figure><figure><img loading="lazy" src="photos/bd2.jpg" alt="요이의 생일"><figcaption>요이의 생일</figcaption></figure><figure><img loading="lazy" src="photos/bd3.jpg" alt="요이의 생일"><figcaption>요이의 생일</figcaption></figure></div>
+    <p>셋째 주에는 둘이 함께 <b>제주 한림</b>으로 워케이션을 떠났고, 28일에는 같은 유니폼을 맞춰 입고 <b>상암</b>에서 우루과이전을 봤다.</p>
+    <div class="strip"><figure><img loading="lazy" src="photos/p13.jpg" alt="2026.9.12 오후 4:17"><figcaption>2026.9.12 오후 4:17</figcaption></figure><figure><img loading="lazy" src="photos/p11.jpg" alt="Spotify House 서울"><figcaption>Spotify House 서울</figcaption></figure><figure><img loading="lazy" src="photos/p01.jpg" alt="9.28 서울월드컵경기장"><figcaption>9.28 서울월드컵경기장</figcaption></figure></div>
+    <div class="chat">
+      <div class="m c">나도 올여름을 가영이랑 같이 보낼 수 있어서 너무 행복했어!<small>9.2 오전 12:04</small></div>
+      <div class="m y">ㅜㅜㅜ 우리 진짜 이번주 잘 보내구 제주에서 많이 많이 행복하자🤍<small>9.15 오후 8:04</small></div>
+    </div>
+    <div class="strip"><figure><img loading="lazy" src="photos/jj1.jpg" alt="제주 한림"><figcaption>제주 한림</figcaption></figure><figure><img loading="lazy" src="photos/jj2.jpg" alt="제주 한림"><figcaption>제주 한림</figcaption></figure><figure><img loading="lazy" src="photos/jj3.jpg" alt="제주 한림"><figcaption>제주 한림</figcaption></figure><figure><img loading="lazy" src="photos/jj4.jpg" alt="제주 한림"><figcaption>제주 한림</figcaption></figure><figure><img loading="lazy" src="photos/jj5.jpg" alt="제주 한림"><figcaption>제주 한림</figcaption></figure><figure><img loading="lazy" src="photos/jj6.jpg" alt="제주 한림"><figcaption>제주 한림</figcaption></figure></div>
+    <span class="tag">가요이</span><span class="tag">요이</span><span class="tag">제주</span>
+  </article>
+
+  <article class="ch rv">
+    <div class="no"><svg class="ast"><use href="#a"/></svg>05</div>
+    <div class="date">2026.10</div>
+    <h3>부산, 그리고<br>파리와 서울 사이</h3>
+    <p>10월 둘째 주, 요이의 안내로 <b>부산</b>에. 송도 바다 앞 숙소에서 시작해 해운대까지. 9일에는 부산비엔날레에서 헤드폰을 나눠 끼고, 영화제의 밤을 보냈다. 챔은 요이의 동생 영준이도 처음 만났다.</p>
+    <div class="chat">
+      <div class="m c">부산도 데려와주고 동생도 소개시켜줘서 내가 더 고마워 가영아❣️<small>10.11 오후 5:25</small></div>
+    </div>
+    <div class="strip"><figure><img loading="lazy" src="photos/p03.jpg" alt="부산 가는 비행기"><figcaption>부산 가는 비행기</figcaption></figure><figure><img loading="lazy" src="photos/p02.jpg" alt="10.9 부산비엔날레"><figcaption>10.9 부산비엔날레</figcaption></figure><figure><img loading="lazy" src="photos/p08.jpg" alt="10.9 부산비엔날레"><figcaption>10.9 부산비엔날레</figcaption></figure><figure><img loading="lazy" src="photos/p06.jpg" alt="부산국제영화제"><figcaption>부산국제영화제</figcaption></figure><figure><img loading="lazy" src="photos/p10.jpg" alt="야외극장에서"><figcaption>야외극장에서</figcaption></figure><figure><img loading="lazy" src="photos/p04.jpg" alt="밤의 해변"><figcaption>밤의 해변</figcaption></figure><figure><img loading="lazy" src="photos/p17.jpg" alt="영준이와 셋이서"><figcaption>영준이와 셋이서</figcaption></figure></div>
+    <p>곧이어 요이는 <b>파리</b>로 출장을 떠났다. 처음으로 멀리 떨어진 일주일, 새벽과 아침이 엇갈리는 시차 속에서도 대화는 끊기지 않았다. 10월은 넉 달 중 메시지가 가장 많은 달이 됐다.</p>
+    <div class="chat">
+      <div class="m c">돌아오면 먹고 싶은 배달음식 다 시켜놓고 놀자~~<small>10.20 오전 1:17</small></div>
+      <div class="m y">오빠도 푹 자고, 내일 일어나면 연락해요~ 사랑해 ❤️<small>오전 6:40</small></div>
+    </div>
+    <p>요이가 돌아오고 맞은 첫 일요일에는 둘이 <b>파주</b> 아울렛으로 쇼핑을 갔다.</p>
+    <span class="tag">자기</span><span class="tag">요이</span><span class="tag">6,382개의 메시지</span>
+  </article>
+
+  <article class="ch rv">
+    <div class="no"><svg class="ast"><use href="#a"/></svg>06</div>
+    <div class="date">2026.11 — 지금</div>
+    <h3>더 이해하고,<br>더 배려하면서</h3>
+    <p>설렘만 있던 대화는 이제 일 고민을 나누고, 서운한 마음도 꺼내 놓고, 다시 맞춰 가는 대화가 됐다. ‘가영님’은 ‘요이’가, ‘채문님’은 ‘자기’가 됐다.</p>
+    <div class="chat">
+      <div class="m y">나도 우리가 서로 더 이해하고 배려하면서 더 잘 지냈으면 좋겠어요.<small>11.5 오전 9:29</small></div>
+    </div>
+    <div class="strip"><figure><img loading="lazy" src="photos/p12.jpg" alt="모자 쓴 날"><figcaption>모자 쓴 날</figcaption></figure><figure><img loading="lazy" src="photos/p16.jpg" alt="브라운관 속 우리"><figcaption>브라운관 속 우리</figcaption></figure><figure><img loading="lazy" src="photos/p18.jpg" alt="나눠 가진 키링"><figcaption>나눠 가진 키링</figcaption></figure><figure><img loading="lazy" src="photos/p19.jpg" alt="맥주와 한 끼"><figcaption>맥주와 한 끼</figcaption></figure></div>
+    <div class="big">넉 달 전엔 “내일 봬요”였던 인사가<br>지금은 “이번 주말에는 뭐할까?”</div>
+  </article>
+</div></section>
+
+<section class="blue"><div class="wrap">
+  <div class="head rv"><div class="k">How we call each other</div><h2 class="d">서로를<br>부르는 법</h2><p>대화 속 호칭이 달마다 몇 번 나왔는지 세어 봤다. ‘가영이’가 줄어든 자리를 ‘요이’가 채운다.</p></div>
+  <div class="rows rv" id="rows"></div>
+  <div class="note rv">11월은 12일까지의 숫자.</div>
+</div></section>
+
+<section id="album"><div class="wrap">
+  <div class="head rv"><div class="k">Album</div><h2 class="d">앨범</h2><p>누르면 크게 볼 수 있다.</p></div>
+  <div class="album rv"><img loading="lazy" src="photos/p05.jpg" alt="챔과 요이의 사진 1"><img loading="lazy" src="photos/p01.jpg" alt="챔과 요이의 사진 2"><img loading="lazy" src="photos/p06.jpg" alt="챔과 요이의 사진 3"><img loading="lazy" src="photos/p09.jpg" alt="챔과 요이의 사진 4"><img loading="lazy" src="photos/p07.jpg" alt="챔과 요이의 사진 5"><img loading="lazy" src="photos/p13.jpg" alt="챔과 요이의 사진 6"><img loading="lazy" src="photos/p04.jpg" alt="챔과 요이의 사진 7"><img loading="lazy" src="photos/p11.jpg" alt="챔과 요이의 사진 8"><img loading="lazy" src="photos/p02.jpg" alt="챔과 요이의 사진 9"><img loading="lazy" src="photos/p10.jpg" alt="챔과 요이의 사진 10"><img loading="lazy" src="photos/p08.jpg" alt="챔과 요이의 사진 11"><img loading="lazy" src="photos/p03.jpg" alt="챔과 요이의 사진 12"><img loading="lazy" src="photos/p15.jpg" alt="챔과 요이의 사진 13"><img loading="lazy" src="photos/p17.jpg" alt="챔과 요이의 사진 14"><img loading="lazy" src="photos/p12.jpg" alt="챔과 요이의 사진 15"><img loading="lazy" src="photos/p16.jpg" alt="챔과 요이의 사진 16"><img loading="lazy" src="photos/p18.jpg" alt="챔과 요이의 사진 17"><img loading="lazy" src="photos/p19.jpg" alt="챔과 요이의 사진 18"><img loading="lazy" src="photos/hero.jpg" alt="챔과 요이의 사진 19"><img loading="lazy" src="photos/pc1.jpg" alt="챔과 요이의 사진 20"><img loading="lazy" src="photos/pc2.jpg" alt="챔과 요이의 사진 21"><img loading="lazy" src="photos/pc3.jpg" alt="챔과 요이의 사진 22"><img loading="lazy" src="photos/pc4.jpg" alt="챔과 요이의 사진 23"><img loading="lazy" src="photos/bd1.jpg" alt="챔과 요이의 사진 24"><img loading="lazy" src="photos/bd2.jpg" alt="챔과 요이의 사진 25"><img loading="lazy" src="photos/bd3.jpg" alt="챔과 요이의 사진 26"><img loading="lazy" src="photos/jj1.jpg" alt="챔과 요이의 사진 27"><img loading="lazy" src="photos/jj2.jpg" alt="챔과 요이의 사진 28"><img loading="lazy" src="photos/jj3.jpg" alt="챔과 요이의 사진 29"><img loading="lazy" src="photos/jj4.jpg" alt="챔과 요이의 사진 30"><img loading="lazy" src="photos/jj5.jpg" alt="챔과 요이의 사진 31"><img loading="lazy" src="photos/jj6.jpg" alt="챔과 요이의 사진 32"><img loading="lazy" src="photos/yy1.jpg" alt="챔과 요이의 사진 33"><img loading="lazy" src="photos/yy2.jpg" alt="챔과 요이의 사진 34"><img loading="lazy" src="photos/yy3.jpg" alt="챔과 요이의 사진 35"><img loading="lazy" src="photos/yy4.jpg" alt="챔과 요이의 사진 36"><img loading="lazy" src="photos/fm1.jpg" alt="챔과 요이의 사진 37"><img loading="lazy" src="photos/fm2.jpg" alt="챔과 요이의 사진 38"><img loading="lazy" src="photos/fm3.jpg" alt="챔과 요이의 사진 39"></div>
+</div></section>
+
+<section id="film"><div class="wrap">
+  <div class="head rv"><div class="k">Film</div><h2 class="d">기념영상</h2><p>사진 2,119장으로도 다 못 담는, 움직이는 우리.</p></div>
+  <figure class="vid rv"><video id="vd" controls muted playsinline preload="metadata" poster="video/poster.jpg" src="video/film.mp4"></video><figcaption>귤메달 티셔츠를 맞춰 입은 날, 88초</figcaption></figure>
+</div></section>
+
+<section id="map"><div class="wrap">
+  <div class="head rv"><div class="k">Map</div><h2 class="d">같이 간 곳</h2><p>핀을 누르면 그날의 이야기가 열린다.</p></div>
+  <div class="rv">
+    <div class="tabs"><button class="on" data-v="kr">전국</button><button data-v="seoul">서울</button></div>
+    <div class="maps">
+      <svg id="mkr" viewBox="0 0 400 673"><path class="nk" d="M257 14.5L252 17L249.5 19L249 20.5L249 22.5L250 26.5L249.5 30.5L248 34L246.5 37.5L244 40L239.5 45.5L233.5 49L227 51.5L220.5 51.5L211 51.5L204.5 52.5L202.5 51L201.5 49.5L200 49L182.5 50.5L177 52L174 52.5L165.5 49.5L153.5 50.5L151 50.5L145 51L138.5 53.5L132.5 57L127.5 61L126 63L124.5 66L123 70.5L121 72.5L117.5 75L116 77L108 89L104.5 91.5L102 92.5L100 92.5L99 93.5L99 96L99.5 106L98 107.5L98 109.5L95 110.5L92.5 112.5L90.5 112L77.5 103.5L74.5 99.5L72.5 99L70.5 99.5L63.5 103.5L61.5 104L59.5 104.5L56 104L54 104.5L52 106L51 107L51.5 109.5L52 111.5L52.5 113L52.5 114.5L52 116L47.5 116L46 111.5L45 109L43 109L42.5 106.5L42.5 101L39.5 103L38 101L37 99.5L36 98L34.5 96.5L32 97.5L32.5 99L34 100L35 101L36 105L36 106.5L34 105.5L33 104.5L31 104L29 103.5L27.5 102L23 95L22.5 93.5L19.5 92.5L18.5 91L18.5 89.5L19 87.5L17 87L14.5 85.5L9.5 85.5L8 85L4.5 83L2 82.5L-0.5 82.5L-2 83.5L-2 85.5L-0.5 87L2 89L3.5 89.5L7 89L7.5 91.5L9.5 91L11 91.5L10 93L9 95L11 95L12.5 94L12 96L10.5 97L8 98L6.5 98L5.5 97L4.5 96L3 95L2.5 97.5L3.5 100L3.5 103L2 105L3.5 106.5L3.5 108L1.5 108L1 109.5L2 112.5L0.5 113.5L-1.5 113L-1.5 111.5L-2.5 110.5L-4.5 111.5L-5.5 112.5L-7.5 111.5L-6.5 110L-9 111.5L-10 114.5L-11.5 117L-15 118.5L-18 118.5L-20 119L-21 121.5L-22 123L-23.5 123.5L-25 122.5L-23.5 116.5L-22 114L-19.5 114.5L-14.5 112.5L-16 111.5L-19 112L-21 111.5L-19.5 110L-17.5 108L-15.5 107L-13.5 106.5L-8.5 108L-7 107L-6.5 104.5L-8.5 105L-10.5 104L-11.5 103L-8.5 99.5L-10.5 98L-12.5 97.5L-13.5 96L-16.5 96.5L-16 98L-18 98L-20 98.5L-18.5 99.5L-16 101L-14.5 102.5L-14.5 104.5L-16 103L-19 102L-21 101.5L-23.5 102L-22.5 103.5L-21 104.5L-24 106.5L-25.5 108L-27 108L-28 106.5L-33.5 106.5L-32.5 105L-28.5 102.5L-27 100L-28 98.5L-32 96L-31.5 94L-33.5 94.5L-34.5 96L-35.5 98L-36.5 100L-38 101L-39.5 101.5L-41 101.5L-46.5 100.5L-50 98.5L-53 97.5L-54.5 97L-55.5 95.5L-54.5 93L-57 94.5L-57.5 93L-56.5 91.5L-53.5 91L-50 89L-47.5 89L-45 90.5L-43 91L-40.5 90.5L-39.5 89.5L-38.5 88.5L-40 88.5L-42.5 88L-44 86.5L-45.5 84.5L-46 82.5L-45 81.5L-41 81.5L-37 80.5L-35.5 82L-35 83.5L-33 84L-32 80L-30.5 79L-31 77.5L-33 76.5L-36.5 76.5L-38 76.5L-41 75.5L-43 75L-49 77.5L-53.5 78.5L-61.5 75L-64.5 72L-66.5 71L-67.5 73L-68.5 74L-70.5 74.5L-75 75L-85.5 73L-86.5 72L-86 70.5L-84 69.5L-79.5 69.5L-77.5 68.5L-77 66L-72.5 65L-71.5 64L-70.5 61L-69.5 60L-67 60L-65.5 61L-63.5 64.5L-56.5 60L-59 59L-63.5 60L-66.5 58L-67.5 56.5L-68 54L-67 46.5L-62.5 39L-60.5 34.5L-59.5 33L-58.5 34L-58.5 35.5L-57.5 34.5L-55.5 32L-54.5 29L-54 27L-56.5 24.5L-56.5 22L-56.5 20L-57.5 19L-56 18L-54.5 19L-52.5 18.5L-50 21L-48 19L-46 18L-44 19.5L-43 18.5L-43 16L-43 14.5L-44 13.5L-45 12L-45 10.5L-44 9.5L-42 12L-41 13.5L-39 13L-39 10.5L-39 9L-38 10.5L-37 11.5L-35 11L-32 9.5L-30 10L-28 10.5L-27 9.5L-25 8L-24 7L-21.5 6.5L-19 6.5L-16 7L-14.5 7.5L-14.5 6L-13.5 5L-8.5 7.5L-8 10.5L-6.5 11L-5.5 10L-5.5 8.5L-4 8.5L-2.5 10L-1.5 12.5L1 13.5L3.5 14L5.5 13.5L3.5 11L2 10L0 10L-5.5 4.5L-6.5 3.5L-8 3L-10 3L-11.5 2.5L-14 -2.5L-15.5 -2.5L-16.5 -0.5L-15.5 1.5L-17 2.5L-20 3.5L-22 1.5L-23 3.5L-26.5 3.5L-27.5 1.5L-28 3.5L-27 4.5L-28.5 5.5L-30 5.5L-31.5 5L-32.5 3.5L-33 1.5L-31 -0.5L-32 -1.5L-32 -4L-33.5 -5L-35 -5L-34.5 -2.5L-35.5 1L-38 1.5L-39.5 0L-40 -1.5L-42 -3L-43 -6L-42.5 -8L-42 -10L-42 -14.5L-41.5 -16.5L-40.5 -19L-40 -22L-38 -24L-37 -26L-36 -29L-34 -32.5L-32.5 -34.5L-31.5 -36.5L-30.5 -38L-29 -38L-26.5 -38L-25 -38.5L-29.5 -39L-29 -41L-29 -43L-29 -44.5L-29 -46L-28 -47.5L-25 -48L-24 -49L-25 -50L-24 -53L-22 -54L-20 -54L-17.5 -53.5L-18 -55L-19 -56L-16 -63.5L-14.5 -64.5L-16 -64.5L-17 -65.5L-17.5 -67L-17 -69L-18 -70.5L-16.5 -70L-14.5 -71L-13.5 -72L-15 -73L-21 -74L-22.5 -74.5L-22.5 -76.5L-20 -79.5L-22 -79.5L-24 -78.5L-24 -81.5L-22.5 -83.5L-20.5 -84.5L-19 -86.5L-18.5 -88L-18 -89.5L-14.5 -91.5L-14 -93L-13.5 -94.5L-14.5 -96L-16 -95L-25.5 -90L-27.5 -89.5L-29 -89L-32.5 -92L-34 -93.5L-35.5 -94L-35 -96.5L-41 -96.5L-40 -94L-44 -93.5L-45 -94.5L-45.5 -96L-46 -97.5L-48 -98.5L-50 -98L-51.5 -98.5L-54.5 -100.5L-55 -102L-56.5 -102L-59.5 -105L-61.5 -103L-62.5 -104L-64 -104.5L-65.5 -108.5L-67 -110L-68.5 -111L-70 -111.5L-71.5 -112.5L-73.5 -112.5L-74.5 -114L-77 -114L-78 -115L-78.5 -117.5L-79.5 -119L-80 -117.5L-79.5 -115.5L-78.5 -113.5L-79 -112L-79 -110.5L-79.5 -108L-78.5 -106L-80 -106L-80.5 -104L-79.5 -103L-82 -103L-84 -102L-86 -100L-88.5 -99.5L-89 -97L-91 -97.5L-90.5 -99L-91.5 -100L-90.5 -103L-90 -105L-89 -106L-88.5 -107.5L-89 -109L-91 -108.5L-92 -110.5L-93 -111.5L-94.5 -112L-94.5 -114L-94 -116L-94.5 -117.5L-96 -118.5L-96 -121.5L-97 -123L-100.5 -123L-108.5 -124.5L-109.5 -123.5L-111 -125L-112 -127.5L-115 -129L-116 -131.5L-117 -132.5L-118 -133.5L-118 -135L-116.5 -136L-114.5 -137L-114 -138.5L-113 -144L-111 -147L-108.5 -146.5L-105.5 -145.5L-102.5 -146.5L-104 -147.5L-108.5 -147.5L-110.5 -148L-112.5 -149.5L-113 -151.5L-113.5 -153.5L-114.5 -155L-113 -156.5L-100 -168.5L-98.5 -169L-97.5 -171L-96 -173L-92 -175L-90.5 -177L-89 -177.5L-84.5 -178.5L-82.5 -179.5L-81.5 -181.5L-80.5 -184L-80 -186.5L-78.5 -187.5L-76.5 -188L-74.5 -189L-69.5 -193.5L-66.5 -197.5L-65.5 -199.5L-64.5 -198.5L-63.5 -197.5L-62.5 -196.5L-59.5 -196L-57 -196.5L-55.5 -196L-53.5 -196.5L-52 -197L-52.5 -199.5L-53.5 -201L-54.5 -202L-54.5 -204L-53.5 -205.5L-51.5 -206L-49 -207L-47.5 -207.5L-45 -208.5L-43.5 -210L-41.5 -211L-39 -212L-36 -213L-33 -214L-31 -215.5L-30 -218L-28.5 -218.5L-27 -218.5L-24.5 -217.5L-23 -218L-21 -218L-20 -217L-17.5 -216.5L-17 -218.5L-17 -220.5L-14.5 -220.5L-13.5 -221.5L-13.5 -223.5L-12 -225.5L-10 -226.5L-6.5 -227L-5 -227.5L-4 -231L-3.5 -233.5L-1.5 -233.5L0 -232.5L1 -231.5L6.5 -231.5L7.5 -232.5L6.5 -234L4 -237L7.5 -241.5L9.5 -242.5L12.5 -243.5L14 -244.5L15 -245.5L16.5 -245.5L20.5 -244L25.5 -246.5L28 -247.5L29 -246.5L30 -245.5L32.5 -245.5L34 -246.5L37 -246.5L38 -247.5L38 -249L35.5 -249L36.5 -250.5L38 -251L40 -251.5L41.5 -252.5L43 -255.5L44 -256.5L44 -258.5L46 -259.5L46.5 -261.5L47.5 -262.5L49 -264L50 -265.5L49 -267.5L51 -269.5L61.5 -275.5L62.5 -276.5L63.5 -278L66 -283L67 -284L69.5 -286L70.5 -287.5L72.5 -292.5L73.5 -293.5L78.5 -299L81 -301L83.5 -301L83 -299.5L85.5 -299.5L85.5 -302.5L84.5 -306L83.5 -309L84.5 -310L87.5 -315L89 -320.5L90.5 -323.5L91.5 -325L90.5 -326.5L90 -328L90 -329.5L93 -333L95 -335.5L99.5 -335.5L103.5 -339L105 -339.5L104 -340.5L102 -341.5L100.5 -343.5L102 -344L103.5 -344L105 -343.5L106 -342.5L109 -340L110.5 -339L112.5 -343L117.5 -345L119 -348L120 -349L122 -350.5L123.5 -351L124.5 -347.5L126 -347L128.5 -347L130.5 -345.5L133.5 -343L134.5 -341.5L136.5 -338.5L137.5 -337L135.5 -337L134.5 -335.5L135 -334L137 -332L140 -331L139.5 -329.5L141 -329L145.5 -327.5L147 -326L145 -325.5L143 -324.5L141.5 -323L140 -320.5L141.5 -320.5L142.5 -319L144.5 -320L146 -319L147.5 -319L149 -321L151 -321L153 -319.5L154.5 -319.5L156.5 -320L157 -318.5L155.5 -317L158.5 -315.5L162.5 -315.5L165 -316L166.5 -316L167.5 -315L170 -314.5L171.5 -315L173 -315.5L174.5 -316.5L176 -316L177.5 -315L179 -314.5L181 -315.5L181 -313L182 -311.5L186 -310.5L189 -308.5L190.5 -308.5L191.5 -310L194.5 -309.5L203.5 -309L205.5 -310L207.5 -308.5L209.5 -308.5L210.5 -309.5L211.5 -311L212.5 -312L214.5 -312.5L218 -313L221 -310.5L222.5 -312L223.5 -313L224.5 -312L224.5 -309.5L224.5 -307.5L225.5 -306L228 -307.5L227.5 -305L229.5 -303.5L231.5 -303.5L233 -305L234.5 -304L233 -302.5L237 -302L240.5 -305.5L250 -321.5L251.5 -326L249.5 -328.5L249.5 -330.5L248 -333L246.5 -334.5L244 -336L240.5 -338.5L238 -340.5L238 -343.5L237 -345.5L232.5 -353.5L231.5 -355.5L228.5 -356.5L227.5 -358L227 -360L225 -370L225.5 -371.5L226.5 -373L228.5 -374L232.5 -374L247.5 -377.5L257 -377L259 -376.5L261 -375L265.5 -375L268.5 -373.5L270 -373.5L274 -374.5L275.5 -374L278 -376.5L280 -377.5L286.5 -377L289.5 -377.5L290.5 -379.5L299.5 -379L305.5 -377.5L307.5 -377L311 -378L312 -382.5L313 -384L315 -384.5L317 -385L319 -385.5L321 -388L322 -389.5L322 -391.5L324.5 -390.5L326 -390.5L327.5 -391L330 -394L333 -396L334.5 -398L336 -399L336 -401L333.5 -401L333 -403L334 -404L336 -404.5L336 -406.5L337.5 -408L336 -409.5L334 -409.5L337 -410.5L339 -413L338 -414L338 -416L339 -417.5L344 -418.5L345 -421L345.5 -422.5L347.5 -421.5L349 -422.5L348 -424.5L349 -425.5L351 -423.5L352.5 -423L354 -424L355.5 -424.5L361 -421L364.5 -419L365.5 -417L367 -416.5L368.5 -418.5L368.5 -420.5L371 -421L371.5 -422.5L371.5 -424L371.5 -425.5L375 -425L378.5 -424.5L382 -425L384 -428.5L384.5 -433L384.5 -437.5L385 -441L387 -443.5L386 -444.5L385 -446L386 -448L388.5 -448.5L388 -450L389 -451L389.5 -452.5L388.5 -453.5L387 -455L386.5 -457L387 -458.5L387 -460L388 -462L390 -465L390 -466.5L390.5 -470L394 -478.5L395 -480.5L395 -483.5L396.5 -485.5L399.5 -485.5L399 -487L398 -488.5L401 -490L403 -490L406.5 -486L407.5 -485L409 -484.5L413.5 -484.5L418 -486L420.5 -487L421.5 -486L421.5 -484.5L420.5 -482.5L419.5 -481L418.5 -480L422.5 -478.5L427.5 -478.5L431.5 -477.5L433 -473.5L432 -464L432 -459.5L433.5 -455.5L438.5 -450.5L439.5 -448.5L445.5 -443.5L447.5 -443.5L449 -443L449 -439.5L451.5 -437L453 -437.5L453 -439.5L451.5 -441L453 -443L454.5 -444L456 -444L457.5 -443L458 -441.5L458 -437L459 -435L460 -432.5L460 -431L461 -430L463 -425L464 -423.5L466 -422.5L468 -421.5L469.5 -420L470.5 -418L471 -415L471 -412L472 -409.5L474.5 -408L471.5 -406.5L468 -405.5L465.5 -404.5L465 -406L465 -407.5L463.5 -409.5L462 -410L459.5 -410.5L457.5 -411.5L454 -413L453 -411L451.5 -409.5L450 -409.5L448.5 -411L447 -411L447 -409.5L446 -408.5L445 -407.5L445.5 -406L445.5 -404.5L447 -404L447 -402.5L444.5 -403.5L442.5 -402L443.5 -400.5L442 -399L440.5 -398.5L440 -396L439 -395L438 -396.5L438.5 -399L438 -401L436.5 -401L432.5 -397.5L430.5 -395L429.5 -394L428 -394L428.5 -392L428 -385.5L426.5 -386L425.5 -385L424.5 -383.5L423.5 -382.5L421.5 -383.5L418 -384L416.5 -383L415.5 -381L414 -380L413.5 -378L412.5 -375.5L412.5 -373.5L410.5 -375.5L409.5 -373L407.5 -372L409 -371L409.5 -369.5L408 -368.5L407 -367L406.5 -365L406 -362.5L405 -361.5L403.5 -363L401 -363.5L399 -360.5L398.5 -357.5L398.5 -353.5L397 -350L396 -348.5L395.5 -347L393 -348.5L388.5 -346L387 -343L386 -339L385 -337.5L383 -336.5L380.5 -333.5L379.5 -330L378.5 -325L376.5 -322L377.5 -319.5L377.5 -317.5L377 -315.5L377.5 -312.5L379.5 -310L381.5 -308L383 -307L385 -307.5L385.5 -305.5L387 -304L388 -303L390 -303.5L391 -302L390.5 -299.5L389.5 -297L388 -295L387 -292.5L383 -278L382.5 -273L384 -268.5L383.5 -267L383 -265.5L383.5 -261.5L384 -256.5L386 -253.5L387.5 -252.5L386 -249L384.5 -246.5L385 -244L384 -241.5L383 -240L381 -241L378 -240.5L376 -240.5L374.5 -240.5L373 -240.5L369.5 -240.5L367.5 -239L367.5 -237L365.5 -236.5L364.5 -235.5L360.5 -235L356 -233.5L352.5 -231.5L349 -229.5L348 -228.5L347 -226.5L345.5 -223L344.5 -221.5L343 -222.5L342 -224L341.5 -225.5L340 -225.5L338 -225L336.5 -224L336 -222.5L335.5 -221L335 -219.5L334.5 -217L334 -215.5L333 -214L332.5 -212L332 -209L331 -208L330 -206.5L327 -202.5L323.5 -198L319 -198.5L314 -197L307 -189.5L303.5 -186.5L300.5 -186L299 -184.5L296 -184L294.5 -183.5L293.5 -182.5L290.5 -183L287.5 -182L285.5 -179.5L284.5 -180.5L282.5 -180L281 -178L280.5 -175L284.5 -173.5L285.5 -171.5L285 -170L285 -167L283 -165.5L281.5 -164.5L280 -165L278 -165.5L277 -164.5L274 -163L273.5 -161L272 -160.5L270.5 -159.5L268 -159.5L266.5 -158L265 -156.5L261.5 -155L260 -155L257 -155L255 -151.5L254 -147L251.5 -147.5L249.5 -151.5L248 -152.5L245 -151.5L245 -147.5L242 -147.5L240 -147L238.5 -146L237 -146L236 -147L224 -149L223.5 -147L222.5 -145.5L220.5 -144.5L218.5 -141.5L216.5 -140.5L214.5 -142L213 -139.5L213 -137.5L212.5 -132.5L211.5 -131.5L203 -130.5L204.5 -129.5L201.5 -127L198 -127.5L195 -126.5L193.5 -123L192 -121.5L190.5 -123L188 -124.5L187 -122L185.5 -121.5L184 -120.5L182.5 -119L181.5 -116.5L179 -114.5L178 -113.5L177 -111L177 -109L177.5 -107.5L177.5 -104.5L178.5 -103L181.5 -102L183 -100L184 -97L180 -92.5L178.5 -87.5L180 -80L182.5 -68.5L182.5 -65L181 -63.5L179 -65L179 -66.5L179 -68.5L181 -71.5L177.5 -76L177 -77.5L176 -78.5L174 -78.5L171 -76L170.5 -74.5L165.5 -72.5L166.5 -71L169 -70.5L171 -70.5L172.5 -71L174 -70.5L174 -69L171 -67L169.5 -67.5L168 -68L167 -66.5L166 -63L165.5 -59.5L165 -56.5L166 -54.5L167 -52L168 -51L169.5 -50.5L171 -48.5L172.5 -48L174 -48L174 -50.5L176 -51L178 -47L180 -45.5L187 -46L189 -45.5L190 -44.5L191 -43.5L192 -42.5L199.5 -42.5L201 -42L204 -37.5L207 -34L207.5 -32.5L208 -31L209.5 -29L212.5 -26L213 -24.5L214.5 -24.5L216 -22L217 -20.5L219.5 -19L222.5 -14.5L224.5 -12.5L231.5 -10.5L243 2.5L248.5 0L252.5 3.5L255 5.5L257 8L257 10.5L257 12.5L257 14.5Z"/><path class="land" d="M257 14.5L260 20L264 28L265 31.5L267 37.5L275.5 53L282 69.5L283 71.5L286.5 75.5L287.5 79L303 100.5L309 109L316.5 116.5L317.5 117.5L322 123L322.5 125.5L322.5 128.5L323 130.5L326.5 132.5L327.5 134.5L330 143L331 145.5L333 146L334 147L338 155.5L340.5 158.5L341.5 160.5L342 162L342.5 164L347 169L348.5 173L350 181.5L351.5 186.5L356.5 193L356.5 194.5L355.5 197L354.5 198L354.5 199.5L355.5 203L356.5 213L357 218L360 227.5L360.5 232.5L359.5 237L357.5 240.5L355.5 245.5L356 250L357.5 255L358 259.5L357.5 269.5L356.5 271.5L354 275L352.5 277L352.5 279L352 293L352.5 295L353.5 296.5L354.5 301L355 304L356.5 305L356 307L354.5 308.5L352 310L351.5 311.5L353.5 313.5L355 315L356.5 317L358.5 317L361 315.5L366.5 309L368 307L369.5 308L369.5 310L370.5 312L371 314.5L369.5 316.5L366 323.5L365.5 326.5L365 334.5L362.5 341L362.5 345.5L360 353L358.5 356.5L357.5 358L358.5 360.5L359.5 362.5L359.5 365L359.5 368L358.5 372.5L357.5 374.5L356 376.5L354.5 377L354 375L353.5 372.5L352.5 370.5L351 370L350.5 372.5L352.5 373.5L352.5 375L352.5 376.5L352.5 378L350.5 378.5L349.5 379.5L350 382.5L350.5 384.5L349.5 386L348.5 387.5L349.5 388.5L350 390.5L348 391.5L346.5 392.5L343.5 395L341 395L341 396.5L340.5 399L339.5 401L340 402.5L339 405L337.5 408.5L336 410.5L335 412L334 413.5L332 413.5L330.5 413.5L328.5 414L327.5 416L328 418L328 420L326 421L324 419.5L323 418.5L322 417.5L320 420L319 422.5L318.5 424.5L317 424L316 422.5L316 424L316.5 426L315 425L314 426L312.5 425.5L312 423L312 421L313 417.5L313 416L311.5 417L309 422L307.5 422L307.5 420L307.5 417.5L306 419L305.5 422L303 421.5L297 422L296.5 420L296 418.5L295 421.5L294 422.5L292 421.5L291 419.5L288.5 420.5L288.5 415.5L286.5 416.5L286.5 418L285 417L284 415L282.5 414L280.5 415L281.5 413.5L280.5 411L280 407L278.5 407.5L277 409.5L277 411L278.5 413.5L279 416.5L280 419L281.5 421L281.5 423.5L283.5 424.5L280.5 425L279 423.5L278 421.5L272 419.5L268 420L267 421L268 422.5L266 423L263 425L259.5 426L259 428.5L258 430L267 425.5L268.5 425.5L269 427.5L269.5 429L269.5 430.5L269 432L266 433L264 433L263 432L262 433.5L263.5 434.5L264 436L264 439L263.5 444L264.5 445L266 443.5L266 446.5L264 449.5L261.5 450L259 450L259 448L261 448L262 447L256 446.5L253.5 444.5L254.5 442.5L256.5 441.5L254.5 437.5L253 439L251.5 442L249 442L247 439.5L244 438.5L243 440.5L242.5 442.5L242.5 444L240.5 443.5L236 444L234.5 443L234.5 440.5L232.5 440L229 440L228 438.5L228.5 436.5L228.5 427.5L228.5 426L229 424.5L229.5 422L228.5 423.5L227 426L225.5 427.5L223.5 427.5L225 431.5L224 432.5L221.5 432L219 434L218 431L216.5 429L216 433L215 435.5L213 437.5L210.5 438L208.5 437L207.5 438L206 436.5L204.5 436L200.5 436.5L199 435.5L198 433.5L197 432.5L197 434.5L196.5 437.5L195 439L192 442L190 443L188.5 441.5L187 438L185 437.5L184 439L184 441.5L184 443.5L185 445L186 448L188 450.5L189 451.5L190 452.5L192.5 452L195 449.5L197 449.5L199 449.5L200.5 449.5L202.5 448.5L202.5 451L202 452.5L201 456L200 461.5L199 463L196 464L193 462.5L191 462.5L189.5 466L188 466L189 467.5L189.5 469.5L190 474.5L187 473L185 473L183.5 472L182.5 470.5L182 468L182.5 465L184 463L184.5 460.5L184 458.5L182 454.5L180.5 454L180 452L179 448.5L179 447L179.5 445L178 444L176 448.5L175 450L171.5 451L170 451.5L166 451.5L164 451.5L165.5 452.5L168 454L170 454.5L166 456.5L163.5 457.5L163.5 459L164.5 460L166 459L168 460.5L167 461.5L168 466L171 468.5L173.5 470.5L175.5 473L173 473L176 475L177 476L177 478.5L175 480L173.5 480L168 477.5L165.5 477.5L164 478L162.5 479L162.5 480.5L163.5 482.5L165 483L169 482.5L171 484.5L167 488.5L165 490.5L163.5 490L160.5 492L161 494L162 495L159.5 495.5L155.5 490L154.5 487.5L151 483.5L146.5 486L147 487.5L145.5 487L144 486.5L142.5 486L142 484.5L141.5 482.5L142.5 481.5L144.5 480.5L147 477.5L148 475L150 473L150 475L149.5 477L148.5 480.5L151 480L153 479L154.5 477.5L154.5 474L154 472.5L152.5 471L152.5 469.5L155.5 465L156.5 466L157.5 467.5L157.5 470L158.5 471L161 471L162.5 467.5L163.5 466L162 464L161.5 462L159.5 462.5L157.5 463.5L155.5 462L153.5 458.5L152 460.5L150 465L148.5 467L146.5 467.5L144 467L142 468L140.5 470.5L136 473L134.5 474.5L133 475.5L131.5 476L131 478.5L130.5 480.5L129.5 481.5L129.5 484.5L124.5 489.5L124.5 494L121 493.5L120.5 495L120 497L121 498.5L119.5 498L117 496L113.5 495L112 492L112 486.5L112 484.5L112.5 482.5L112 481L111.5 479.5L110.5 478.5L108.5 480L107.5 482.5L108 484L108.5 485.5L105.5 487L106 488.5L108 491.5L104.5 493.5L103 495L104.5 495L105 496.5L103 496.5L101.5 496.5L101 499L97 500L96 501L93.5 509.5L93.5 512L91 511.5L86.5 513L85.5 511.5L86.5 508.5L86.5 507L84.5 506L81.5 506L82.5 505L82.5 502.5L85 500L85 497.5L83.5 497L81.5 496.5L81.5 495L82.5 492.5L80.5 492L81 489.5L82.5 488L85.5 487.5L87.5 487.5L86.5 486L85 485L86.5 484L87.5 482.5L86.5 481L85 482.5L83.5 482.5L81.5 482L80.5 484.5L79 484.5L76 484.5L73.5 485L73.5 483L72.5 482L70.5 481L69.5 479L69 480.5L67.5 481L65 479L64.5 477.5L65.5 476.5L67.5 476.5L67 475L64.5 474L62.5 472.5L62.5 469L63 465.5L64 463L64 461L65 460L66.5 460L67.5 461.5L70.5 466L69.5 467.5L69.5 469.5L69.5 471L71.5 476.5L77.5 478L79.5 479L81 477.5L79.5 477L77.5 476.5L76.5 475L75.5 474L76 471.5L74.5 471.5L74 473L72.5 471L72.5 468.5L73 466.5L72.5 464.5L75 464.5L79 465L79 467.5L79.5 469.5L81 470.5L82 471.5L83.5 472L84.5 473L86 474L87 475L85.5 471.5L88.5 472.5L90.5 473.5L93.5 474.5L95 474L93.5 473.5L91.5 472.5L88.5 470L87.5 468L84.5 464L82.5 463L80.5 462.5L77.5 462.5L76 461.5L73.5 462L71.5 461.5L71 460L72.5 458.5L76.5 458.5L80 457L84.5 460L86 460L86.5 458.5L86.5 456.5L87.5 455L90 454.5L94.5 455.5L96.5 455.5L97.5 453.5L99 453.5L98 452L96 451.5L90.5 452L91 450L90.5 448L91.5 447L92 445L91.5 443L90 442.5L88.5 443.5L87.5 445L88 448L87 451.5L86 455L85 456.5L83 456.5L83.5 454L82.5 453L80.5 454L77 454L76.5 455.5L75 455.5L73 456L71.5 454L72.5 453L74.5 451.5L75 450L75.5 448.5L75.5 446L76.5 444L75.5 443L74.5 441L74 439L74.5 437L75.5 435.5L77.5 434.5L75.5 433L73.5 434L71.5 435L72.5 437.5L71 440L69.5 440L67.5 439.5L66.5 438.5L68 438L67 437L65.5 435.5L66.5 434L69.5 434.5L69.5 432L72 429.5L71.5 427L68.5 423.5L67 421.5L65.5 421L66 424L64 425L62.5 423.5L63.5 422.5L61.5 419L61 417.5L62.5 415.5L64 415.5L65.5 416.5L66.5 418L68.5 416L69 413.5L70 415.5L69.5 418L69 419.5L70.5 420.5L70.5 422L71.5 423L73.5 424L75.5 424.5L75 427L76.5 429L79 423.5L79.5 422L79.5 420L78.5 419L77 418.5L75.5 417.5L74.5 415L71.5 411.5L71 410L71.5 408.5L72.5 407L71 405.5L71 404L68.5 404.5L66 404.5L67 403.5L68.5 403L70.5 402.5L72.5 402.5L71 401.5L71.5 400L72.5 399L72.5 397L72.5 395.5L72.5 394L73.5 392L75.5 389L77.5 391L79 392L76.5 387.5L76 386L76.5 383.5L78.5 380L81 374L83 371L86 370L89.5 369L92.5 369L94 368L95 366L97 365.5L99 367.5L100.5 369.5L102 370L100.5 365.5L99.5 363.5L98 363L85 365L80.5 362L80.5 359L83 356.5L84.5 355L86.5 353L89.5 351L93 349.5L95.5 345.5L96 342.5L97 341.5L98 340.5L102 340L105.5 340.5L107.5 342L109 342.5L110 344L110.5 341.5L109.5 339.5L107 338L105 336.5L103 335.5L103 333.5L104 332L110 332L111.5 332L113 330.5L115 329L114.5 327.5L112.5 326.5L105.5 329.5L103 329.5L99 329.5L94 329L94 327L94 324L90 322.5L86 323L85.5 319.5L94 319L99 318L103.5 318L105 317L106.5 317.5L108.5 316.5L112 314L116 312L118 311L118 309.5L113 311L111 311.5L109 313L107.5 314.5L106 315L103.5 315.5L102 316.5L100 315.5L99.5 314L99 312.5L98.5 311L97 309L96 307.5L97 306.5L95.5 305.5L94 305L92 301.5L90.5 300.5L89 301.5L88.5 300L86.5 299L84.5 299L84 301L83.5 298L86.5 296.5L89.5 295.5L93.5 296.5L92 294.5L91 293.5L90 292.5L88.5 293L87.5 292L89 286L90 283.5L91.5 282.5L90.5 281.5L86.5 280L85 279.5L86.5 278L90.5 277L91.5 276L90.5 274.5L86.5 274L84.5 272L83.5 270.5L85 270.5L83.5 268L85.5 267L87 266.5L89 264L93 263L95 262L89 262L86 265.5L84.5 266L83.5 265L82.5 262.5L82 260.5L82 259L84 257L85 255.5L83 255.5L81.5 254.5L80.5 253L80.5 251L80.5 249L79.5 248L81 247.5L83 247L84.5 247L85 245.5L84.5 243.5L82.5 241.5L84.5 239.5L83.5 237.5L81.5 237L81 235L83.5 233.5L82.5 232L81.5 230.5L79.5 232.5L78 234L78.5 236L78.5 238L78 240L78.5 243L77.5 245.5L76.5 246.5L75 245.5L73 245L71.5 244L71.5 238L72.5 235.5L71.5 232L70.5 231L69 231L68.5 232.5L68 234.5L67.5 236L65.5 236L66.5 238L68 240.5L68.5 242L67.5 243L69 246L67.5 246.5L65.5 248L64.5 249.5L64.5 247.5L64 246L65.5 243.5L62.5 239L63.5 236.5L62.5 233.5L61 234.5L58.5 237.5L56.5 238.5L54.5 239L52.5 238.5L52 236.5L52 235L56 235L57 232.5L56 231L54.5 230L53 230L52 229L51 233L50.5 234.5L49.5 235.5L49 231.5L49 229L52 225L52.5 222.5L53 224.5L54 225.5L55.5 226L57 226.5L56 225L55 223.5L57.5 224L59 224L59.5 222.5L57.5 222L55.5 221.5L57 218L55 216L55 214.5L56.5 213L59 212.5L58.5 215L60 216L62.5 216L63.5 214.5L63.5 212L63.5 208.5L63.5 205.5L66 205L65.5 206.5L65.5 209L66.5 211.5L67.5 215L66.5 216L65.5 218L66 220.5L63.5 222.5L63.5 224L64.5 225.5L66.5 224L70.5 225.5L68.5 221.5L67.5 219L68.5 218L70.5 219.5L71.5 220.5L71.5 219L73 218L75 218L74 217L72.5 216L74.5 215L76 213L76.5 210L75.5 208.5L72.5 208L71 207.5L70 206.5L70.5 205L71.5 206L72.5 204L71.5 203L70 203L68.5 203L70 201L72 201.5L73 202.5L73.5 201L77 200.5L78.5 201L79.5 202.5L78 204.5L78 207.5L80 206L81 207L81.5 208.5L81.5 210L80.5 211L80.5 216.5L80.5 218L81.5 219L83 216L84.5 210.5L85 208L86.5 208L88.5 210L89.5 212.5L91.5 213L90.5 211.5L90 209L89 208L83.5 202L83.5 200.5L85 201.5L86.5 203.5L88.5 204.5L90.5 204L89.5 202.5L86.5 201L84.5 199.5L84 197L83.5 195L85.5 195L87 195.5L88.5 197L90 198L92 199.5L94 201L95.5 202L96.5 203.5L96 205L95 206L96 208.5L96 211.5L97.5 210L97 206L98 205L99 202.5L100.5 202L102 202L104 202L105.5 203L108 203.5L109 204.5L111 206.5L111.5 209L110 214L111 213L113 211L114.5 211.5L115 213.5L115 216.5L114.5 219L114.5 220.5L115.5 222L116 225.5L114.5 227.5L115 229L117 227L118 225.5L118 224L117.5 221L119.5 221.5L121 222L118 218.5L117 216.5L119 215.5L121 215L125 213.5L128 211.5L129.5 211L130.5 209.5L131 206.5L130 205.5L131.5 204.5L133.5 204L134.5 202L128.5 203.5L127.5 204.5L128 208L127 209L125 210L122 209.5L118.5 207.5L115 204L114 201L119.5 200.5L118 199L120 198.5L122 199.5L121.5 197.5L120 195.5L119 193.5L120 190.5L118 191L117.5 192.5L117.5 194.5L117 196.5L115 196L113.5 196.5L112 197L107.5 195.5L107 193.5L107.5 191.5L107 190L108 188L109.5 186L111 185.5L112.5 184.5L115 184.5L117.5 184L118 181L116 181.5L114.5 183L113 183L112 181.5L112 180L109.5 181L108 182.5L104.5 186L102.5 187L101 186.5L101.5 184.5L103 182.5L100 183L99 181L101 179.5L103 178.5L104 177L101.5 177L100.5 176L99 173.5L98.5 172L100 171L101.5 171.5L103 171L105 171.5L106 172.5L108.5 172L108.5 173.5L109 175.5L111 175.5L112 172L113.5 170L115 170L116 171L118 170.5L117 169L115.5 168L114 168L112 167L110 167.5L108.5 167L105.5 166L101.5 163L103 159L104 158L99 156.5L97 159.5L94.5 157.5L95.5 155.5L97 153.5L96 152.5L94 151.5L93 150.5L93 148.5L92.5 147L93.5 145.5L96 144.5L97 143.5L95.5 144L94 144L93 143L93 141L93.5 138L92 135.5L91.5 134L90.5 132.5L89.5 131.5L89.5 130L89 127.5L88 124L86.5 114.5L87 113L93.5 114.5L95 114L96.5 113.5L99 114L99 115.5L99.5 117.5L99.5 120L99 124L101.5 126.5L105 128L107.5 128L106 126L100.5 122.5L102 118.5L102.5 116L102 114L101 112.5L101 110L101.5 108L102.5 106L101 105L99.5 106L99 96L99 93.5L100 92.5L102 92.5L104.5 91.5L108 89L116 77L117.5 75L121 72.5L123 70.5L124.5 66L126 63L127 62L132.5 57L138.5 53.5L145 51L151 50.5L153.5 50.5L165.5 49.5L174 52.5L177 52L182.5 50.5L200 49L201.5 49.5L202.5 51L203.5 52L211 51.5L220.5 51.5L227 51.5L233.5 49L239.5 45.5L244 40L246.5 37.5L248 34L249.5 30.5L250 26.5L249 22.5L249 20.5L249.5 19L252 17L257 14.5ZM75 263.5L75.5 265.5L77 267.5L77.5 269.5L72.5 269L71 269L70.5 267.5L71.5 266.5L72.5 265L70 266.5L69.5 264L71 262L69.5 262.5L68.5 261.5L68.5 259.5L68 255.5L67.5 252.5L66.5 249.5L67.5 248.5L69 247L70.5 246.5L72 248.5L71.5 250L72.5 254.5L73 256L73 257.5L75 259.5L73 259.5L75 261.5L75 263.5ZM64.5 109L66.5 109L68.5 109L68.5 112.5L67 113.5L64.5 114L61 113L59 114L57.5 112.5L59 109L60.5 108L63 108L64.5 109ZM125 606.5L126 608L124.5 609L124.5 611.5L123.5 613.5L121.5 616L118.5 618.5L117.5 621L116 623.5L115.5 626L113 626L110 626.5L106 629L97 631L94 634L89.5 634.5L85.5 634.5L81 635L77 634L68.5 634L65.5 635.5L64 638.5L62.5 638.5L61 638L58.5 634.5L56 633.5L53 630.5L52 627L54 622L55.5 619.5L59.5 616.5L62.5 611.5L65 610.5L66 608L70.5 606.5L80 604L82.5 601.5L91.5 600.5L97.5 598L99 598.5L106.5 597L111 596.5L114 597L115 599L116 600L121 602L122 603L123 606.5L124 608L125 607ZM146.5 491L149.5 490.5L152 491.5L153 493L152.5 495L151.5 497L149.5 497.5L146 498.5L144.5 498.5L143.5 497.5L141.5 496L141.5 494.5L140.5 493L141.5 492L143.5 491.5L146.5 491ZM72.5 489L72.5 490.5L72.5 492.5L72 494L70 498.5L68.5 500L66.5 498L65.5 500L56.5 505.5L52 506L50.5 505.5L51 503.5L52 502.5L49 500L49 502.5L47 500L48 496.5L50.5 493L53 493L54 490.5L55.5 488.5L57.5 488L58.5 486L59.5 487L61 487L62.5 486.5L62.5 484.5L62 483L59.5 481.5L60.5 480.5L63.5 481L64.5 482L66 483L66.5 484.5L69.5 483.5L72.5 489ZM203 468L205 469.5L205.5 471L206.5 474L206.5 475.5L206 477.5L205.5 479L204.5 480L202.5 479L199 476L198.5 474.5L199 472.5L201.5 470.5L202.5 467L201 465.5L202.5 464L204.5 464.5L204.5 466.5L203 468ZM38 456.5L38 459L36.5 458.5L35 459.5L33 459L32 461L31.5 462.5L29.5 464L28 463L27 461.5L27 460L28 457.5L30 456.5L31.5 457L33 456.5L36 455.5L37.5 456ZM42.5 441.5L43 440L45 440.5L46 443.5L45.5 445L43.5 447L42 447.5L40 446.5L37 447L37 445.5L38.5 443L40 441.5L42 442ZM229.5 452.5L230 454L229.5 456.5L229 458L229.5 460L229.5 461.5L228 462.5L228.5 465L227 466.5L225.5 465.5L222.5 465.5L221 466L220 463.5L219 459L217.5 458.5L215.5 461L215 463.5L213.5 464.5L212 464L210.5 462.5L210.5 460.5L210 459L207.5 450.5L207.5 448.5L207.5 446.5L208.5 444.5L210 443.5L211 441L213 439L214.5 438L215.5 439L216.5 440L217.5 441.5L217.5 443L216.5 444.5L214.5 446.5L215.5 449.5L216.5 451L218.5 451.5L219.5 453.5L221.5 453L223.5 452.5L226 452L229 452.5ZM293 446.5L292.5 448L292.5 449.5L290.5 449.5L290.5 451L292 454L292.5 455.5L290 455L288.5 454L287 453.5L286.5 455L285 458L284.5 459.5L287 461L286.5 463L279.5 465L277.5 465L280.5 463L279 461.5L279 460L279.5 458.5L276.5 460L275.5 459L275.5 456.5L278.5 455.5L279 454L279 452.5L279.5 450.5L278.5 449.5L277.5 450.5L274 452L272.5 453.5L271 452L270 450.5L269 448.5L268.5 446.5L269 445L270.5 444L272 443L273.5 442.5L276.5 441.5L279 442.5L280.5 443.5L283.5 444L281.5 442L280.5 440.5L280.5 438.5L280 436.5L281.5 436.5L287.5 433L286.5 431L287.5 428.5L288.5 427.5L290.5 428.5L290.5 430.5L290 434.5L290.5 436.5L291.5 439L291.5 440.5L289.5 445.5L291.5 445L293 446.5ZM47.5 425.5L44.5 425L43 425L43 421L43.5 419.5L45.5 419L47 417.5L47.5 416L49 415L51 414.5L52.5 415L50 416.5L49 417.5L49.5 420L50.5 422L48.5 423.5L47.5 425.5ZM89.5 142L90.5 143L91 144.5L90 145.5L88 146.5L86.5 147L84.5 148L83 149L78.5 153L76.5 153L76 151.5L74.5 151.5L74.5 150L73 151L71.5 150.5L71.5 149L70.5 148L71.5 146.5L76.5 144L79.5 143.5L81.5 144L83 143L83.5 140.5L85 140L86 141L87.5 141.5L89.5 142ZM493.5 138.5L495 139.5L495 142.5L494 146L492.5 148L491 149L488.5 148.5L486 147L485 145.5L484 143L485 141L486.5 140L490 139.5L492.5 138.5ZM84.5 132.5L83 132.5L82 131.5L80.5 131.5L75.5 132L73.5 131.5L71.5 129L74.5 128L76 126.5L75 124.5L71.5 118.5L71.5 116.5L71.5 111L73 109.5L75 107L76.5 106.5L78.5 107.5L79.5 109L81 110.5L84 112L85.5 113L85.5 115L85 117.5L85.5 119L86 120.5L86.5 125.5L86.5 127L87.5 128L86.5 129.5L85.5 132ZM-80.5 88.5L-79.5 89.5L-79.5 91.5L-81 92.5L-83 91.5L-85.5 91.5L-85.5 93L-83.5 93.5L-85 95.5L-89 95L-92 92.5L-91 88.5L-88.5 89.5L-83.5 87.5L-80.5 88.5ZM53.5 462L54 464.5L53 465.5L51 464.5L50 463.5L48.5 463.5L47 463.5L46 461L44 459L45 458L47 457.5L49 458.5L50.5 459L52.5 459.5L53 461ZM230 449.5L231 450.5L225.5 449.5L223.5 450.5L222 450L220.5 449L220 447.5L220.5 446L221.5 444L222.5 442.5L223.5 441.5L225 441L225.5 442.5L224.5 444L224.5 445.5L225 447L225.5 445.5L226.5 444L228.5 445L229 446.5L229.5 448.5ZM108 511L109 513L107 512.5L105 513L103 512.5L101.5 512L102 510.5L101 509.5L99 509L97 507.5L97 505L97 503.5L97.5 502L99 500.5L101 500L103 501L104.5 502.5L105 505L105.5 506.5L106 508L108 511ZM108 502.5L107.5 501L109 499L110 497.5L112 496.5L114 496L115.5 496.5L115 498L116 499L117 500.5L115 501L113.5 502L111 503L110 504L110 505.5L109 503.5L108 502.5ZM69 447L70.5 448L71 450L69 452L68.5 450.5L66 448L63 448.5L61.5 449L59.5 449L58.5 448L60.5 447.5L62.5 447L63.5 446L64.5 445L65 443.5L64 441.5L66.5 441.5L68.5 442L69.5 443.5L67 445L67 447L69 447Z"/><g id="pkr"></g></svg>
+      <svg id="mse" viewBox="0 0 400 420" style="display:none"><rect width="400" height="420" rx="14" fill="var(--paper)"/><path class="river" id="river"/><text x="388" y="404" text-anchor="end" style="font-size:12px;fill:var(--mute)">한강 · 약도</text><g id="pse"></g></svg>
+    </div>
+    <div class="info" id="info"></div>
+    <div class="abroad">
+      <div><small>NEXT · 11.26—29</small><b>도쿄</b>챔의 생일에 맞춰 함께 떠나는 여행.</div>
+      <div><small>APART · 10월</small><b>파리</b>요이의 출장. 떨어져서도 이어진 대화.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="next"><div class="wrap rv">
+  <div class="k">Next chapter</div>
+  <h2 class="d" style="margin-top:12px">도쿄에서<br>맞는 생일</h2>
+  <div class="chat" style="max-width:300px;margin:26px auto 0"><div class="m c">내 생일 껴서<small>10.13 오후 12:27</small></div><div class="m c">도쿄 다녀올까?<small>오후 12:27</small></div></div>
+  <div class="count" id="tokyo">2026.11.26 출발</div>
+</div></section>
+
+<footer><svg class="ast spin"><use href="#a"/></svg><div>cha*mong · since 2026.07.25<br>챔과 요이의 카카오톡 대화로 만든 기록</div></footer>
+<div id="pop" role="dialog" aria-modal="true" aria-labelledby="popt"><div class="box"><svg class="ast a2 spin"><use href="#a"/></svg><svg class="ast spin"><use href="#a"/></svg><div class="n"><span id="popn">111</span><small>일</small></div><p id="popt"><span id="popd">111</span>일 축하해 요이야!<br>사랑해!</p><button type="button" id="popb">나도 사랑해</button></div></div>
+<div id="tip">음악과 함께 보기 ♪</div>
+<button id="bgm" class="cue" type="button" aria-label="배경음악 재생"><svg class="ast"><use href="#a"/></svg><span>PLAY</span></button>
+<audio id="au" preload="none"></audio>
+<div id="lb"><img alt=""></div>
+
+<script>
+(function(){
+var DAY=864e5;
+function kst(){var n=new Date();return new Date(n.getTime()+n.getTimezoneOffset()*6e4+9*36e5);}
+var t=kst(),today=Date.UTC(t.getFullYear(),t.getMonth(),t.getDate());
+var d=Math.floor((today-Date.UTC(2026,6,25))/DAY)+1;
+if(d>0)document.getElementById('dday').textContent='D+'+d;
+var tk=Math.round((Date.UTC(2026,10,26)-today)/DAY),el=document.getElementById('tokyo');
+el.textContent=tk>0?'도쿄까지 D-'+tk:(tk>=-3?'지금, 도쿄':'2026.11.26—29 도쿄');
+
+var pop=document.getElementById('pop');if(d>0){document.getElementById('popn').textContent=d;document.getElementById('popd').textContent=d;pop.classList.add('on');document.documentElement.style.overflow='hidden';document.getElementById('popb').addEventListener('click',function(e){e.stopPropagation();pop.classList.remove('on');document.documentElement.style.overflow='';if(au.paused)bb.click();});}
+
+var rows=[['님 (채문님 · 가영님)',[22,1,2,1,0]],['가영아 · 가영이',[19,196,159,133,19]],['요이',[0,0,10,104,123]],['자기 (요이가 챔에게)',[1,2,26,114,48]],['사랑해 (챔 + 요이)',[0,6,13,21,4]]];
+var mon=['7월','8월','9월','10월','11월'],h='';
+rows.forEach(function(r){var mx=Math.max.apply(null,r[1]);h+='<div class="row"><h4>'+r[0]+'<span>최고 '+mx+'회</span></h4><div class="cols">'+r[1].map(function(v){return '<i style="height:'+Math.max(3,v/mx*100)+'%"><u>'+v+'</u></i>'}).join('')+'</div><div class="mon">'+mon.map(function(m){return '<span>'+m+'</span>'}).join('')+'</div></div>'});
+document.getElementById('rows').innerHTML=h;
+
+var NS='http://www.w3.org/2000/svg';
+var KR=[
+ {x:126,y:140,n:'서울',w:'2026.07.25 —',t:'시작한 도시',p:'합정과 봉천, 2호선 위의 두 사람. 대부분의 날이 여기서 지나갔다. ‘서울’ 탭에서 자세히.',dx:-14,a:'end'},
+ {x:165,y:83,n:'포천',w:'2026.08.15 — 16',t:'첫 글램핑',p:'광복절 주말, 포천 이동면의 카라반. 이동갈비 맛집 리스트를 자정까지 주고받았다.',dx:14,a:'start'},
+ {x:60,y:616,n:'제주 한림',w:'2026.09 셋째 주',t:'제주 워케이션',p:'요이가 짠 타임테이블을 들고 한림·협재로. “제주에서 많이 많이 행복하자🤍”',dx:14,a:'start'},
+ {x:91,y:107,n:'파주',w:'2026.10.25',t:'아울렛 쇼핑',p:'파리에서 돌아온 요이와 맞은 첫 일요일, 파주 아울렛에서 쇼핑.',dx:-14,a:'end'},
+ {x:324,y:418,n:'부산',w:'2026.10.08 — 11',t:'요이가 데려간 부산',p:'송도 바다 앞 숙소에서 해운대, 광안리까지. 영화제를 보고, 챔이 요이의 동생을 처음 만난 여행.',img:'photos/p05.jpg',dx:-14,a:'end'}
+];
+function prj(lon,lat){return [(lon-126.86)/(127.075-126.86)*400,(37.6-lat)/(37.6-37.425)*420];}
+var SE=[
+ {ll:[126.9403,37.5198],n:'63빌딩',w:'2026.07.25 오후 4시',t:'첫 만남, 퐁피두센터',p:'63빌딩 퐁피두센터 전시로 시작한 첫 데이트. 챔은 커피를 사 들고 왔다.',dx:-12,a:'end',dy:14},
+ {ll:[126.9426,37.5133],n:'노량진',w:'2026.07.25 저녁',t:'첫 저녁, 회',p:'최애 음식이 회라는 요이를 위해 챔이 고른 동네.',dx:12,a:'start',dy:16},
+ {ll:[126.9139,37.5496],n:'합정',w:'요이의 동네',t:'합정',p:'첫 만남 다음 날 영화 약속도 여기. 망원한강을 같이 뛰자던 곳.',dx:12,a:'start'},
+ {ll:[126.9417,37.4824],n:'봉천',w:'챔의 동네',t:'봉천',p:'2호선으로 이어진 반대편. 신림천 러닝 코스가 있는 곳.',dx:12,a:'start'},
+ {ll:[126.8972,37.5683],n:'상암',w:'2026.09.28',t:'우루과이전 직관',p:'같은 유니폼을 입고 서울월드컵경기장에서.',img:'photos/p01.jpg',dx:12,a:'start'},
+ {ll:[126.987,37.5345],n:'이태원',w:'2026.08.01',t:'8월의 첫 주말',p:'요이가 지도를 보내온 저녁, 이태원 골목.',dx:12,a:'start'},
+ {ll:[126.9236,37.5568],n:'홍대',w:'2026.08.09 오전 10:20',t:'일요일 아침 영화',p:'요이가 예매한 CGV 홍대 레이저관에서 〈오디세이〉. 끝나고는 상암 족발야시장으로.',dx:-12,a:'end'},
+ {ll:[126.9737,37.564],n:'서소문',w:'2026.08.29',t:'유영국 〈산은 내 안에 있다〉',p:'서울시립미술관 서소문본관. 첫 만남처럼, 또 전시였다.',img:'photos/yy3.jpg',dx:-12,a:'end',dy:14},
+ {ll:[126.9282,37.5259],n:'여의도',w:'2026.09.06',t:'더현대 서울',p:'여의도역 공차에서 커피를 사 들고 더현대부터. “일단 더현대로~~”',dx:-12,a:'end',dy:-4},
+ {ll:[126.996,37.5105],n:'반포한강',w:'2026.09.11',t:'퇴근 후 러닝',p:'챔이 짠 코스는 반포에서 노들까지 5km. 뛰면서 리프레시하자던 금요일 밤.',dx:12,a:'start',dy:16},
+ {ll:[127.056,37.5446],n:'성수',w:'2026.09.12',t:'Spotify House 서울',p:'챔이 응모해서 당첨된 공연. 앤더슨씨 성수에서, 둘 다 감기 기운이 있던 토요일.',img:'photos/p11.jpg',dx:-12,a:'end'},
+ {ll:[126.985,37.5765],n:'안국',w:'2026.11.07',t:'지대방, 그리고 LA갈비',p:'안국역 2번 출구에서 만나 인사동 전통 찻집 지대방에 함께 갔다. 저녁은 LA갈비.',dx:12,a:'start'}
+];
+SE.forEach(function(s){var q=prj(s.ll[0],s.ll[1]);s.x=q[0];s.y=q[1];});
+var rv=[[126.862,37.572],[126.89,37.553],[126.915,37.538],[126.94,37.528],[126.96,37.517],[126.985,37.51],[127.01,37.519],[127.03,37.527],[127.05,37.532],[127.075,37.536]];
+document.getElementById('river').setAttribute('d',rv.map(function(c,i){var q=prj(c[0],c[1]);return (i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)}).join(''));
+var info=document.getElementById('info');
+function show(s,g){info.innerHTML='<div class="when">'+s.w+'</div><h4>'+s.t+'</h4><p>'+s.p+'</p>'+(s.img?'<img src="'+s.img+'" alt="'+s.t+'">':'');
+  document.querySelectorAll('.pin').forEach(function(e){e.classList.remove('sel')});if(g)g.classList.add('sel');}
+function draw(id,arr,r){var host=document.getElementById(id),first=null;
+  arr.forEach(function(s,i){var g=document.createElementNS(NS,'g');g.setAttribute('class','pin');g.setAttribute('tabindex','0');g.setAttribute('role','button');
+    g.innerHTML='<circle class="o" cx="'+s.x+'" cy="'+s.y+'" r="'+(r*2.2)+'"/><circle class="i" cx="'+s.x+'" cy="'+s.y+'" r="'+r+'"/><text x="'+(s.x+s.dx)+'" y="'+(s.y+(s.dy||5))+'" text-anchor="'+s.a+'">'+s.n+'</text>';
+    g.addEventListener('click',function(){show(s,g)});g.addEventListener('keydown',function(e){if(e.key==='Enter')show(s,g)});
+    host.appendChild(g);if(!i)first=[s,g];});return first;}
+var f1=draw('pkr',KR,8),f2=draw('pse',SE,8);show(f1[0],f1[1]);
+document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});
+  var k=b.dataset.v==='kr';document.getElementById('mkr').style.display=k?'':'none';document.getElementById('mse').style.display=k?'none':'';
+  var f=k?f1:f2;show(f[0],f[1]);});});
+
+var lb=document.getElementById('lb');document.addEventListener('click',function(e){var i=e.target;if(i.tagName==='IMG'&&i.closest('.strip,.album,.wide,.info')){lb.firstChild.src=i.src;lb.classList.add('on')}else if(lb.classList.contains('on'))lb.classList.remove('on')});
+var TR=['music/part2.mp3','music/part1.mp3'],ti=0,au=document.getElementById('au'),bb=document.getElementById('bgm'),bl=bb.querySelector('span');
+function ui(){var on=!au.paused;bb.classList.toggle('on',on);bl.textContent=on?'PAUSE':'PLAY';}
+function go(){var pr=au.play();if(pr&&pr.catch)pr.catch(function(){});}
+au.addEventListener('ended',function(){ti=(ti+1)%TR.length;au.src=TR[ti];go();});
+au.addEventListener('play',ui);au.addEventListener('pause',ui);
+var tip=document.getElementById('tip');tip.addEventListener('click',function(e){e.stopPropagation();bb.click();});
+bb.addEventListener('click',function(e){e.stopPropagation();bb.classList.remove('cue');tip.classList.add('off');if(!au.getAttribute('src'))au.src=TR[ti];if(au.paused)go();else au.pause();});
+
+var els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)});}
+else els.forEach(function(e){e.classList.add('on')});
+})();
+</script>
+</body>
+</html>
