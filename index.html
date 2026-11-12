@@ -134,6 +134,13 @@ section{padding:84px 0;position:relative}
 .count{display:inline-block;margin-top:22px;padding:10px 22px;border-radius:99px;background:var(--blue);color:#fff;font-weight:600;font-size:14px}
 footer{padding:60px 24px 80px;text-align:center;font-size:12px;color:var(--mute)}
 footer .ast{font-size:30px;color:var(--blue);margin-bottom:12px}
+.seen{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.seen{grid-template-columns:1fr}}
+.seen>div{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:18px 18px 10px}
+.seen h3{font-family:'Jua',sans-serif;font-weight:400;font-size:22px;color:var(--blue);margin-bottom:8px}
+.seen li{list-style:none;display:grid;grid-template-columns:44px 1fr;gap:2px 10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.45}
+.seen li:first-child{border-top:0}
+.seen li b{font-weight:600;color:var(--deep);font-size:12px;padding-top:2px}
+.seen li span small{display:block;font-size:12px;color:var(--mute)}
 /* photos */
 .strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:24px -24px 0;padding:0 24px 6px;scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
@@ -333,6 +340,11 @@ footer .ast{font-size:30px;color:var(--blue);margin-bottom:12px}
   <div class="album rv"><img loading="lazy" src="photos/p05.jpg" alt="챔과 요이의 사진 1"><img loading="lazy" src="photos/p01.jpg" alt="챔과 요이의 사진 2"><img loading="lazy" src="photos/p06.jpg" alt="챔과 요이의 사진 3"><img loading="lazy" src="photos/p09.jpg" alt="챔과 요이의 사진 4"><img loading="lazy" src="photos/p07.jpg" alt="챔과 요이의 사진 5"><img loading="lazy" src="photos/p13.jpg" alt="챔과 요이의 사진 6"><img loading="lazy" src="photos/p04.jpg" alt="챔과 요이의 사진 7"><img loading="lazy" src="photos/p11.jpg" alt="챔과 요이의 사진 8"><img loading="lazy" src="photos/p02.jpg" alt="챔과 요이의 사진 9"><img loading="lazy" src="photos/p10.jpg" alt="챔과 요이의 사진 10"><img loading="lazy" src="photos/p08.jpg" alt="챔과 요이의 사진 11"><img loading="lazy" src="photos/p03.jpg" alt="챔과 요이의 사진 12"><img loading="lazy" src="photos/p15.jpg" alt="챔과 요이의 사진 13"><img loading="lazy" src="photos/p17.jpg" alt="챔과 요이의 사진 14"><img loading="lazy" src="photos/p12.jpg" alt="챔과 요이의 사진 15"><img loading="lazy" src="photos/p16.jpg" alt="챔과 요이의 사진 16"><img loading="lazy" src="photos/p18.jpg" alt="챔과 요이의 사진 17"><img loading="lazy" src="photos/hero.jpg" alt="챔과 요이의 사진 18"><img loading="lazy" src="photos/bd1.jpg" alt="챔과 요이의 사진 19"><img loading="lazy" src="photos/bd2.jpg" alt="챔과 요이의 사진 20"><img loading="lazy" src="photos/jj1.jpg" alt="챔과 요이의 사진 21"><img loading="lazy" src="photos/jj2.jpg" alt="챔과 요이의 사진 22"><img loading="lazy" src="photos/sa1.jpg" alt="챔과 요이의 사진 23"></div>
 </div></section>
 
+<section id="seen"><div class="wrap">
+  <div class="head rv"><div class="k">Seen together</div><h2 class="d">함께 본 것들</h2><p>전시, 영화, 공연, 그리고 경기.</p></div>
+  <div class="seen rv"><div><h3>전시</h3><ul><li><b>7.25</b><span>퐁피두센터<small>63빌딩</small></span></li><li><b>8.29</b><span>유영국 〈산은 내 안에 있다〉<small>서울시립미술관 서소문본관</small></span></li><li><b>9월</b><span>김택화미술관<small>제주</small></span></li><li><b>10.9</b><span>부산비엔날레<small>부산 영도 · 을숙도</small></span></li></ul></div><div><h3>영화</h3><ul><li><b>7.26</b><span>〈호프〉<small>합정 롯데시네마</small></span></li><li><b>8.11</b><span>〈오디세이〉<small>CGV 강남</small></span></li><li><b>9월</b><span>〈가능한 사랑〉<small>홍대</small></span></li><li><b>10.10</b><span>〈바이올리니스트〉<small>부산 영화의전당</small></span></li></ul></div><div><h3>공연</h3><ul><li><b>8.22</b><span>기타 라이브<small>신촌</small></span></li><li><b>9.12</b><span>Spotify House 서울<small>성수</small></span></li></ul></div><div><h3>경기</h3><ul><li><b>9.28</b><span>한국 vs 우루과이<small>서울월드컵경기장</small></span></li></ul></div></div>
+</div></section>
+
 <section id="film"><div class="wrap">
   <div class="head rv"><div class="k">Film</div><h2 class="d">기념영상</h2><p>수많은 사진으로도 다 못 담는, 움직이는 우리.</p></div>
   <figure class="vid rv"><video controls muted playsinline loop preload="metadata" poster="video/highlight-poster.jpg" src="video/highlight.mp4"></video><figcaption>8월부터 11월까지, 90초 하이라이트</figcaption></figure>
@@ -424,6 +436,7 @@ function draw(id,arr,r){var host=document.getElementById(id),first=null;
     host.appendChild(g);if(!i)first=[s,g];});return first;}
 function kp(o,x0,y0,k){var x=126+94.7*(o.ll[0]-126.98),y=140-114.9*(o.ll[1]-37.57);o.x=(x-x0)*k;o.y=(y-y0)*k;}
 var JJ=[
+ {ll:[126.635,33.531],n:'조천',w:'2026.09',t:'김택화미술관',p:'제주의 풍경을 그린 김택화 화백의 미술관.',dx:12,a:'start'},
  {ll:[126.7506,33.4333],n:'송당',w:'2026.09.19',t:'블루보틀 제주',p:'귤메달 티셔츠를 맞춰 입고 간 송당리 블루보틀 제주.',img:'photos/bb.jpg',dx:-12,a:'end'},
  {ll:[126.531,33.4996],n:'제주시',w:'2026.09.18',t:'귤메달 티셔츠',p:'제주에 도착한 첫날, 제주시에서 같은 귤메달 티셔츠를 맞춰 샀다.',img:'photos/jj2.jpg',dx:12,a:'start'},
  {ll:[126.4527,33.4977],n:'이호테우',w:'2026.09',t:'이호테우 해안길',p:'자전거를 타고 달린 이호테우 해변 가는 길.',img:'photos/jj3.jpg',dx:0,a:'middle',dy:-16},
